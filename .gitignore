@@ -3,15 +3,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage
 
 # production
-/build
+build
 
 # misc
 .DS_Store
@@ -28,15 +28,15 @@ yarn-error.log*
 # --------------- dotNet ----------------
 
 # Default ignored files
-/shelf/
-/workspace.xml
+shelf/
+workspace.xml
 # Rider ignored files
-/modules.xml
-/contentModel.xml
-/projectSettingsUpdater.xml
-/.idea.NotesApp.iml
+modules.xml
+contentModel.xml
+projectSettingsUpdater.xml
+.idea.NotesApp.iml
 # Editor-based HTTP Client requests
-/httpRequests/
+httpRequests/
 # Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+dataSources/
+dataSources.local.xml
