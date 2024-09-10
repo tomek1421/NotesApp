@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NotesApp.Entities;
 
@@ -13,5 +14,10 @@ public class Note
     [StringLength(int.MaxValue)]
     public string? NoteContent { get; set; }
     
+    //foreign key property
     public Guid? SubjectId { get; set; }
+    
+    //navigation property
+    [ForeignKey("SubjectId")]
+    public Subject? Subject { get; set; } // This makes SubjectId a foreign key
 }
