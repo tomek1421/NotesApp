@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using NotesApp.Entities;
+using NotesApp.Repositories;
+using NotesApp.RepositoryContracts;
+using NotesApp.ServiceContracts;
+using NotesApp.Services;
 
 namespace NotesApp;
 
@@ -11,6 +15,8 @@ public class Program
         
         //Services
         builder.Services.AddControllers();
+
+        builder.Services.AddScoped<ISubjectsRepository, SubjectsRepository>();
         
         //add DbContext as service
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
