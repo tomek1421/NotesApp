@@ -18,6 +18,8 @@ public class Program
 
         builder.Services.AddScoped<ISubjectsRepository, SubjectsRepository>();
         
+        builder.Services.AddScoped<ISubjectsService, SubjectsService>();
+        
         //add DbContext as service
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         {
