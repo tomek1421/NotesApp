@@ -17,6 +17,7 @@ public class Program
         builder.Services.AddControllers();
 
         builder.Services.AddScoped<ISubjectsRepository, SubjectsRepository>();
+        builder.Services.AddScoped<INotesRepository, NoteRepository>();
         
         builder.Services.AddScoped<ISubjectsService, SubjectsService>();
         
