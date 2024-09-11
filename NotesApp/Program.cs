@@ -20,6 +20,7 @@ public class Program
         builder.Services.AddScoped<INotesRepository, NoteRepository>();
         
         builder.Services.AddScoped<ISubjectsService, SubjectsService>();
+        builder.Services.AddScoped<INotesService, NotesService>();
         
         //add DbContext as service
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
