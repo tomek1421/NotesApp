@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NotesApp.DTO;
 using NotesApp.Entities;
+using NotesApp.RepositoryContracts;
 using NotesApp.ServiceContracts;
 
 namespace NotesApp.Controllers;
 
 [Controller]
+[Route("subjects")]
 public class HomeController : Controller
 {
     private readonly ISubjectsService _subjectsService;
+    private readonly INotesService _notesService;
     private readonly ILogger<HomeController> _logger;
     
     //costructor
-    public HomeController(ISubjectsService subjectsService, ILogger<HomeController> logger)
+    public HomeController(ISubjectsService subjectsService, INotesService notesService, ILogger<HomeController> logger)
     {
         _subjectsService = subjectsService;
+        _notesService = notesService;
         _logger = logger;
     }
     
@@ -25,7 +29,6 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    [Route("/subjects")]
     public IActionResult GetSubjects()
     {
         List<SubjectResponse> subjects = _subjectsService.GetAllSubjects();
@@ -33,7 +36,6 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    [Route("/subjects")]
     public IActionResult CreateSubject([FromBody] SubjectAddRequest subjectAddRequest)
     {
         
@@ -58,8 +60,8 @@ public class HomeController : Controller
     }
 
     [HttpPut]
-    [Route("/subjects")]
-    public IActionResult UpdateSubject([FromBody] SubjectUpdateRequest subjectUpdateRequest)
+    [Route("{subjectId}")]
+    public IActionResult UpdateSubject([FromRoute] Guid subjectId,  [FromBody] SubjectUpdateRequest subjectUpdateRequest)
     {
         if (!ModelState.IsValid)
         {
@@ -76,13 +78,13 @@ public class HomeController : Controller
             return BadRequest(errors);
         }
         
-        SubjectResponse subjectResponse = _subjectsService.UpdateSubject(subjectUpdateRequest);
+        SubjectResponse subjectResponse = _subjectsService.UpdateSubject(subjectId, subjectUpdateRequest);
         
         return Json(subjectResponse);
     }
 
     [HttpDelete]
-    [Route("/subjects/{subjectId}")]
+    [Route("{subjectId}")]
     public IActionResult DeleteSubject([FromRoute] Guid subjectId)
     {
         bool isDeleted = _subjectsService.DeleteSubject(subjectId);
@@ -92,5 +94,98 @@ public class HomeController : Controller
         
         return NoContent();
     }
+
+    [HttpGet]
+    [Route("{subjectId}/notes")]
+    public IActionResult GetNotes([FromRoute] Guid subjectId)
+    {
+        SubjectResponse? subject = _subjectsService.GetSubjectById(subjectId);
+        
+        if (subject == null)
+            return NotFound("No such subject");
+        
+        List<NoteResponse>? subjectNoteResponse = _subjectsService.GetNotesBySubjectId(subjectId);
+        
+        /*if (subjectNoteResponse == null)
+            return Json(new List<NoteResponse>());*/
+        
+        return Json(subjectNoteResponse);
+    }
+
+    //Notes - endpoints
     
+    [HttpGet]
+    [Route("{subjectId}/notes/{noteId}")]
+    public IActionResult GetNote([FromRoute] Guid subjectId, [FromRoute] Guid noteId)
+    {
+        NoteResponse? noteResponse = _notesService.GetNoteById(subjectId, noteId);
+        
+        if (noteResponse == null)
+            return NotFound("No such note");
+
+        return Json(noteResponse);
+    }
+
+    [HttpPost]
+    [Route("{subjectId}/notes")]
+    public IActionResult CreateNote([FromRoute] Guid subjectId, [FromBody] NoteAddRequest noteAddRequest)
+    {
+        if (!ModelState.IsValid)
+        {
+            List<string> errorsList = new List<string>();
+            foreach (var value in ModelState.Values)
+            {
+                foreach (var error in value.Errors)
+                {
+                    errorsList.Add(error.ErrorMessage);
+                }
+            }
+
+            string errors = string.Join("\n", errorsList);
+            return BadRequest(errors);
+        }
+        
+        //TODO
+        // while entering not existing subject id, database throw error 500
+        
+        NoteResponse noteResponse = _notesService.AddNote(subjectId, noteAddRequest);
+
+        return Json(noteResponse);
+    }
+
+    [HttpPut]
+    [Route("{subjectId}/notes/{noteId}")]
+    public IActionResult UpdateNote([FromRoute] Guid subjectId, [FromRoute] Guid noteId, [FromBody] NoteUpdateRequest noteUpdateRequest)
+    {
+        if (!ModelState.IsValid)
+        {
+            List<string> errorsList = new List<string>();
+            foreach (var value in ModelState.Values)
+            {
+                foreach (var error in value.Errors)
+                {
+                    errorsList.Add(error.ErrorMessage);
+                }
+            }
+
+            string errors = string.Join("\n", errorsList);
+            return BadRequest(errors);
+        }
+        
+        NoteResponse noteResponse = _notesService.UpdateNote(subjectId, noteId, noteUpdateRequest);
+        
+        return Json(noteResponse);
+    }
+
+    [HttpDelete]
+    [Route("{subjectId}/notes/{noteId}")]
+    public IActionResult DeleteNote([FromRoute] Guid subjectId, [FromRoute] Guid noteId)
+    {
+        bool isDeleted = _notesService.DeleteNote(subjectId, noteId);
+        
+        if (!isDeleted)
+            return NotFound("No such note");
+
+        return NoContent();
+    }
 }
