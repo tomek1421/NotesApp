@@ -44,3 +44,4 @@ bin
 obj
 .idea
 .vs
+.DotSettings.user
