@@ -17,4 +17,6 @@ public interface ISubjectsRepository
     Subject UpdateSubject(Subject subject);
     
     bool DeleteSubject(Guid subjectId);
+    
+    List<Note>? GetNotesBySubjectId(Guid subjectId);
 }

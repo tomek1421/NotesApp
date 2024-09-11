@@ -18,6 +18,5 @@ public class Note
     public Guid? SubjectId { get; set; }
     
     //navigation property
-    [ForeignKey("SubjectId")]
-    public Subject? Subject { get; set; } // This makes SubjectId a foreign key
+    public virtual Subject? Subject { get; set; } // This makes SubjectId a foreign key
 }

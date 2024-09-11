@@ -10,24 +10,12 @@ public class SubjectsService : ISubjectsService
 {
     private readonly ISubjectsRepository _subjectsRepository;
     private readonly ILogger<SubjectsService> _logger;
-    
+
     //constructor
     public SubjectsService(ISubjectsRepository subjectsRepository, ILogger<SubjectsService> logger)
     {
         _subjectsRepository = subjectsRepository;
         _logger = logger;
-    }
-
-    private SubjectResponse ConvertSubjectToSubjectResponse(Subject subject)
-    {
-        SubjectResponse subjectResponse = new SubjectResponse()
-        {
-            SubjectId = subject.SubjectId,
-            SubjectName = subject.SubjectName,
-            SubjectDescription = subject.SubjectDescription
-        };
-        
-        return subjectResponse;
     }
     
     public SubjectResponse AddSubject(SubjectAddRequest? subjectAddRequest)
@@ -46,7 +34,7 @@ public class SubjectsService : ISubjectsService
         
         _subjectsRepository.AddSubject(subject);
         
-        return ConvertSubjectToSubjectResponse(subject);
+        return subject.ToSubjectResponse();
         
     }
 
@@ -54,21 +42,34 @@ public class SubjectsService : ISubjectsService
     {
         List<Subject> subject = _subjectsRepository.GetAllSubjects();
         
-        return subject.Select(temp => ConvertSubjectToSubjectResponse(temp)).ToList();
+        return subject.Select(temp => temp.ToSubjectResponse()).ToList();
     }
 
-    public SubjectResponse UpdateSubject(SubjectUpdateRequest? subjectUpdateRequest)
+    public SubjectResponse? GetSubjectById(Guid? subjectId)
     {
-        if (subjectUpdateRequest == null)
-            throw new ArgumentNullException((nameof(subjectUpdateRequest)));
+        if (subjectId == null)
+            return null;
+        
+        Subject? subject = _subjectsRepository.GetSubjectById(subjectId.Value);
+
+        if (subject == null)
+            return null;
+        
+        return subject.ToSubjectResponse();
+    }
+
+    public SubjectResponse UpdateSubject(Guid? subjectId, SubjectUpdateRequest? subjectUpdateRequest)
+    {
+        if (subjectId == null || subjectUpdateRequest == null)
+            throw new ArgumentNullException();
         
         //validation
         ValidationHelper.ModelValidation(subjectUpdateRequest);
         
         //get matching subject
-        Subject? matchingSubject = _subjectsRepository.GetSubjectById(subjectUpdateRequest.SubjectId);
+        Subject? matchingSubject = _subjectsRepository.GetSubjectById(subjectId.Value);
 
-        //Chnage to messange instead exception
+        //Chanage to messange instead exception
         
         if (matchingSubject == null)
             throw new ArgumentException("Given subject id does not exist");
@@ -78,7 +79,7 @@ public class SubjectsService : ISubjectsService
         
         _subjectsRepository.UpdateSubject(matchingSubject);
 
-        return ConvertSubjectToSubjectResponse(matchingSubject);
+        return matchingSubject.ToSubjectResponse();
     }
 
     public bool DeleteSubject(Guid? subjectId)
@@ -94,5 +95,17 @@ public class SubjectsService : ISubjectsService
         _subjectsRepository.DeleteSubject(subjectId.Value);
 
         return true;
+    }
+
+    public List<NoteResponse>? GetNotesBySubjectId(Guid? subjectId)
+    {
+        if (subjectId == null)
+            throw new ArgumentNullException((nameof(subjectId)));
+        
+        List<Note>? subjectNotesList = _subjectsRepository.GetNotesBySubjectId(subjectId.Value);
+        
+        List<NoteResponse>? subjectNoteResponseList = subjectNotesList?.Select(temp => temp.ToNoteResponse()).ToList();
+
+        return subjectNoteResponseList;
     }
 }

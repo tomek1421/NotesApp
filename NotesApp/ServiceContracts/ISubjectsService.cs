@@ -1,4 +1,5 @@
 using NotesApp.DTO;
+using NotesApp.Entities;
 
 namespace NotesApp.ServiceContracts;
 public interface ISubjectsService
@@ -7,7 +8,11 @@ public interface ISubjectsService
 
     List<SubjectResponse> GetAllSubjects();
     
-    SubjectResponse UpdateSubject(SubjectUpdateRequest? subjectUpdateRequest);
+    SubjectResponse? GetSubjectById(Guid? subjectId);
+    
+    SubjectResponse UpdateSubject(Guid? subjectId, SubjectUpdateRequest? subjectUpdateRequest);
     
     bool DeleteSubject(Guid? subjectId);
+    
+    List<NoteResponse>? GetNotesBySubjectId(Guid? subjectId);
 }

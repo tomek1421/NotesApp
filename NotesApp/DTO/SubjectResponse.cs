@@ -1,3 +1,5 @@
+using NotesApp.Entities;
+
 namespace NotesApp.DTO;
 
 public class SubjectResponse
@@ -7,4 +9,19 @@ public class SubjectResponse
     public string? SubjectName { get; set; }
     
     public string? SubjectDescription { get; set; }
+}
+
+public static class SubjectExtensions
+{
+    public static SubjectResponse ToSubjectResponse(this Subject subject)
+    {
+        SubjectResponse subjectResponse = new SubjectResponse()
+        {
+            SubjectId = subject.SubjectId,
+            SubjectName = subject.SubjectName,
+            SubjectDescription = subject.SubjectDescription
+        };
+        
+        return subjectResponse;
+    }
 }

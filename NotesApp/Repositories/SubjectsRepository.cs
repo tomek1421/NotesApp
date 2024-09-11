@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using NotesApp.DTO;
 using NotesApp.Entities;
 using NotesApp.RepositoryContracts;
@@ -49,9 +50,17 @@ public class SubjectsRepository : ISubjectsRepository
 
     public bool DeleteSubject(Guid subjectId)
     {
+        //first delete correlated notes with subject
+        _db.Notes.RemoveRange(_db.Notes.Where(temp => temp.SubjectId == subjectId));
+        //than delete subject
         _db.Subjects.RemoveRange(_db.Subjects.Where(temp => temp.SubjectId == subjectId));
         
         int rowsDeleted = _db.SaveChanges();
         return rowsDeleted > 0;
+    }
+
+    public List<Note>? GetNotesBySubjectId(Guid subjectId)
+    {
+        return _db.Subjects.Include("Notes").FirstOrDefault(temp => temp.SubjectId == subjectId)?.Notes?.ToList();
     }
 }
