@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using NotesApp.DTO;
 using NotesApp.Entities;
 using NotesApp.RepositoryContracts;
@@ -6,6 +7,7 @@ using NotesApp.ServiceContracts;
 
 namespace NotesApp.Controllers;
 
+[EnableCors("MyPolicy")]
 [Controller]
 [Route("subjects")]
 public class HomeController : Controller
@@ -104,10 +106,7 @@ public class HomeController : Controller
         if (subject == null)
             return NotFound("No such subject");
         
-        List<NoteResponse>? subjectNoteResponse = _subjectsService.GetNotesBySubjectId(subjectId);
-        
-        /*if (subjectNoteResponse == null)
-            return Json(new List<NoteResponse>());*/
+        SubjectWithNotesResponse? subjectNoteResponse = _subjectsService.GetNotesBySubjectId(subjectId);
         
         return Json(subjectNoteResponse);
     }

@@ -14,5 +14,5 @@ public interface ISubjectsService
     
     bool DeleteSubject(Guid? subjectId);
     
-    List<NoteResponse>? GetNotesBySubjectId(Guid? subjectId);
+    SubjectWithNotesResponse? GetNotesBySubjectId(Guid? subjectId);
 }

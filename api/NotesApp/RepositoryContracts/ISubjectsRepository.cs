@@ -18,5 +18,5 @@ public interface ISubjectsRepository
     
     bool DeleteSubject(Guid subjectId);
     
-    List<Note>? GetNotesBySubjectId(Guid subjectId);
+    Subject? GetNotesBySubjectId(Guid subjectId);
 }

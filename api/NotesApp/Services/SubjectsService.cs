@@ -97,15 +97,21 @@ public class SubjectsService : ISubjectsService
         return true;
     }
 
-    public List<NoteResponse>? GetNotesBySubjectId(Guid? subjectId)
+    public SubjectWithNotesResponse? GetNotesBySubjectId(Guid? subjectId)
     {
         if (subjectId == null)
             throw new ArgumentNullException((nameof(subjectId)));
         
-        List<Note>? subjectNotesList = _subjectsRepository.GetNotesBySubjectId(subjectId.Value);
+        Subject? subject = _subjectsRepository.GetNotesBySubjectId(subjectId.Value);
         
-        List<NoteResponse>? subjectNoteResponseList = subjectNotesList?.Select(temp => temp.ToNoteResponse()).ToList();
+        if (subject == null)
+            return null;
+        
+        List<NoteResponse>? subjectNoteResponseList = subject.Notes?.Select(temp => temp.ToNoteResponse()).ToList();
 
-        return subjectNoteResponseList;
+        if (subjectNoteResponseList == null)
+            subjectNoteResponseList = new List<NoteResponse>();
+        
+        return subject.ToSubjectWithNotesResponse(subjectNoteResponseList);
     }
 }

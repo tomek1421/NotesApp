@@ -22,6 +22,16 @@ public class Program
         builder.Services.AddScoped<ISubjectsService, SubjectsService>();
         builder.Services.AddScoped<INotesService, NotesService>();
         
+        //Cors
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("MyPolicy",
+                policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+                });
+        });
+        
         //add DbContext as service
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         {
@@ -53,6 +63,9 @@ public class Program
         }
         
         app.UseRouting();
+        
+        app.UseCors();
+        
         app.MapControllers();
         
         app.Run();

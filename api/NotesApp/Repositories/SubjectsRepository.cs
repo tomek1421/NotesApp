@@ -59,8 +59,8 @@ public class SubjectsRepository : ISubjectsRepository
         return rowsDeleted > 0;
     }
 
-    public List<Note>? GetNotesBySubjectId(Guid subjectId)
+    public Subject? GetNotesBySubjectId(Guid subjectId)
     {
-        return _db.Subjects.Include("Notes").FirstOrDefault(temp => temp.SubjectId == subjectId)?.Notes?.ToList();
+        return _db.Subjects.Include("Notes").FirstOrDefault(temp => temp.SubjectId == subjectId);
     }
 }

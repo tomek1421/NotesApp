@@ -68,6 +68,7 @@ public class NotesService : INotesService
         Note? matchingNote = _notesRepository.GetNoteById(subjectId.Value, noteId.Value);
         
         //Change to message instead exception
+        //maybe return null
         
         if (matchingNote == null)
             throw new ArgumentException("Given note id does not exist");
