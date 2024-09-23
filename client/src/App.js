@@ -4,7 +4,9 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import AllSubjectsPage from './pages/AllSubjectsPage';
 import AddSubjectPage from './operation_pages/AddSubjectPage';
+import DeleteSubjectPage from './operation_pages/DeleteSubjectPage';
 import SubjectPage from './pages/SubjectPage';
+import UpdateSubjectPage from './operation_pages/UpdateSubjectPage';
 import TasksPage from './pages/TasksPage';
 import SemesterPlanPage from './pages/SemesterPlanPage';
 
@@ -17,6 +19,8 @@ function App() {
           <Route path="subjects">
             <Route index element={<AllSubjectsPage />}/>
             <Route path="add-subject" element={<AddSubjectPage />} />
+            <Route path=":subjectId/delete-subject" element={<DeleteSubjectPage />} />
+            <Route path=":subjectId/edit" element={<UpdateSubjectPage />} />
             <Route path=":subjectId/notes">
               <Route index element={<SubjectPage />} />
             </Route>
