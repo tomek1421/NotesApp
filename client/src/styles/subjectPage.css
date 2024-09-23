@@ -1,0 +1,142 @@
+.subjectTile {
+    width: 16rem;
+    height: 19rem;
+    padding: 1.5rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    transition: box-shadow 0.5s;
+}
+
+.subjectTile:hover {
+    box-shadow: 0px 5px 15px rgb(209, 209, 209);
+}
+
+.subject-h2 {
+    margin-top: 0;
+}
+
+.subject-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    height: 100%;
+}
+
+.subject-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem
+}
+
+.subject-desc {
+    width: 16rem;
+    color: #595959;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.subject-details {
+    color: #898989;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    /* border: 1px solid red; */
+}
+
+.subjects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(4rem/3);
+}
+
+.operation-container {
+    width: 40rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.operation-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    /* border: 1px solid red; */
+}
+
+.flex-operation-buttons {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.operation-flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.subject-props {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 7rem;
+}
+
+.desc {
+    text-align: left;
+    width: 40rem;
+}
+
+.datails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #898989;
+}
+
+.details-item {
+    text-align: right;
+}
+
+.note-tile {
+    background-color: white;
+    padding: 1rem 2rem;
+    width: 62rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    transition: box-shadow 0.5s;
+}
+
+.note-tile:hover {
+    box-shadow: 0px 5px 15px rgb(209, 209, 209);
+}
+
+.date {
+    font-size: 1rem;
+    color: #898989;
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.note-left {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
