@@ -1,0 +1,20 @@
+[
+    {
+        "title": "python",
+        "desc": "Python is a simple, versatile programming language known for its readability. It supports various programming styles and is widely used in fields like web development and data science.",
+        "notesNumber": 13,
+        "dateOfCreation": "23.05.24"
+    },
+    {
+        "title": "C++",
+        "desc": "C++ is a powerful, high-performance programming language that supports both procedural and object-oriented programming.",
+        "notesNumber": 6,
+        "dateOfCreation": "13.07.24"
+    },
+    {
+        "title": "math",
+        "desc": "C++ is a powerful, high-performance programming language that supports both procedural and object-oriented programming.",
+        "notesNumber": 9,
+        "dateOfCreation": "15.07.24"
+    }
+]
