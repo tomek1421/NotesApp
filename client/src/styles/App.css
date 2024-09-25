@@ -1,5 +1,6 @@
 .navbar {
-    box-shadow: 0px 5px 10px rgb(213, 213, 213);
+    /* box-shadow: 0px 5px 10px rgb(213, 213, 213); */
+    border-bottom: 1px solid #d2d2d2;
 }
 
 .navbar ul {
@@ -13,8 +14,12 @@
     padding: 1rem;
 }
 
-.navbar ul li{
-    display: flex;
+.navbar ul li {
+    color: #3c3c3c;
+}
+
+.navbar ul li:hover {
+    color: black;
 }
 
 .logo {
@@ -43,14 +48,20 @@
 
 .header-section-line {
     border-bottom: 1px solid #d2d2d2;
-    padding-bottom: 1rem;
     padding: 1rem;
     margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
 }
 
 .header-section-line div {
     display: flex;
     gap: 1rem
+}
+
+.h1-notes {
+    font-size: 1.5rem;
 }
 
 /* buttons */
@@ -85,14 +96,18 @@ button:hover {
 }
 
 .full-button {
-    background-color: #1c8dff;
+    background-color: #44a1ff;
     color: white;
 }
 
+.full-button:hover {
+    background-color: #1c8dff;
+}
+
 .delete-full-button {
-    background-color: #ff3131;
+    background-color: #fe5c5c;
     color: white;
-    border: 1px solid #ff3131;
+    border: 1px solid #fe5c5c;
 }
 
 .delete-full-button:hover {
@@ -102,12 +117,12 @@ button:hover {
 
 .cancel-button {
     background-color: transparent;
-    color: black;
-    border: 1px solid black;
+    color: #3c3c3c;
+    border: 1px solid #3c3c3c;
 }
 
 .cancel-button:hover {
-    background-color: black;
+    background-color: #3c3c3c;
 }
 
 .subject-button {
@@ -203,4 +218,97 @@ button:hover {
 
 .margin {
     margin: 2rem 0rem;
+}
+
+button span {
+    margin-right: 0.5rem;
+}
+
+.bird-img {
+    width: 100%;
+    height: calc(100vh - 4.3rem);
+    object-fit: cover;
+}
+
+.home-page {
+    position: relative;
+}
+
+.home-label {
+    font-size: 6rem;
+    color: white;
+    position: absolute;
+    top: 12rem;
+    left: 12rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-label div:nth-child(2) {
+    font-size: 4rem;
+    align-self: end;
+}
+
+.home-page button {
+    position: absolute;
+    top: 75vh;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-width: 2px;
+}
+
+.home-section {
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.home-tile {
+    width: 20rem;
+    height: 20rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: all 0.2s;
+}
+
+.home-tile:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgb(213, 213, 213);
+}
+
+.home-tile p {
+    color: #595959;
+}
+
+.home-tile div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer {
+    color: white;
+    background-color: black;
+    font-weight: 300;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    padding: 5rem;
+}
+
+.message {
+    background-color: #fff3b5;
+    border: 2px solid #bfa100;
+    color: #bfa100;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 40rem;
+    width: fit-content;
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

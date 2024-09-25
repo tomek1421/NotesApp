@@ -42,8 +42,8 @@ function DeleteNotePage() {
                 <br/>
                 ID: {noteId}
                 <div className="flex-operation-buttons" >
-                    <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >cancel</button></Link>
-                    <button onClick={handleDelete} type="submit" className="delete-full-button" >delete</button>
+                    <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >Cancel</button></Link>
+                    <button onClick={handleDelete} type="submit" className="delete-full-button" >Delete</button>
                 </div>
                 <Toaster />
             </div>

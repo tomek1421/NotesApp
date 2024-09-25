@@ -6,6 +6,7 @@ import "quill/dist/quill.snow.css";
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getNote, saveNote } from '../apiCalls/notes';
 import toast, { Toaster } from "react-hot-toast";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Delta = Quill.import('delta');
 
@@ -109,14 +110,14 @@ function NotePage() {
     }
 
     console.log(lastChange);
-
+    console.log(quillRef.current?.getText());
+    
     return (
         <div className="flex-center" >
             <div className="outlet-container" >
                 <div className="header-section-line flex-space-between">
                     <h1>{noteData.noteTitle}</h1>
-                    {/* <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >back to notes</button></Link> */}
-                    <button className="cancel-button" onClick={handleExit} >back to notes</button>
+                    <button className="cancel-button" onClick={handleExit} ><span>Notes</span><FontAwesomeIcon icon="fa-right-from-bracket" /></button>
                 </div>
                 <form onSubmit={handleSave} >
                     <div id="editor" >

@@ -42,8 +42,8 @@ function DeleteSubjectPage() {
                 <br/>
                 ID: {subjectId}
                 <div className="flex-operation-buttons" >
-                    <Link to="/subjects" ><button className="cancel-button" >cancel</button></Link>
-                    <button onClick={handleDelete} type="submit" className="delete-full-button" >delete</button>
+                    <Link to="/subjects" ><button className="cancel-button" >Cancel</button></Link>
+                    <button onClick={handleDelete} type="submit" className="delete-full-button" >Delete</button>
                 </div>
                 <Toaster />
             </div>

@@ -85,6 +85,9 @@ function UpdateSubjectPage() {
         
     }
 
+    const nameStyle = error.subjectName ? {border: "1px solid red"} : null;
+    const descStyle = error.subjectDescription ? {border: "1px solid red"} : null;
+
     return (
         <div className="flex-center align-center width-max">
             <div className="operation-container" >
@@ -99,6 +102,7 @@ function UpdateSubjectPage() {
                                 placeholder="subject name"
                                 value={formData.subjectName}
                                 onChange={handleChange}
+                                style={nameStyle}
                             />
                             <div className="input-error" >{ error.subjectName && error.subjectName }</div>
                         </div>
@@ -110,14 +114,15 @@ function UpdateSubjectPage() {
                                 value={formData.subjectDescription}
                                 onChange={handleChange}
                                 rows="3"
+                                style={descStyle}
                             >
                             </textarea>
                             <div className="input-error" >{ error.subjectDescription && error.subjectDescription }</div>
                         </div>
                     </div>
                     <div className="flex-operation-buttons" >
-                        <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >cancel</button></Link>
-                        <button type="submit" className="full-button" >edit</button>
+                        <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >Cancel</button></Link>
+                        <button type="submit" className="full-button" >Edit</button>
                     </div>
                 </form>
                 <Toaster />

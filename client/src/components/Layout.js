@@ -6,19 +6,18 @@ function Layout() {
         <div>
             <div className="navbar">
                 <ul>
-                    <li>
-                        <Link to="/" ><img className="logo" src={logo} alt="Logo" /></Link>
-                    </li>
-                    <li>
-                        <Link to="subjects" >My Subjects</Link>
-                    </li>
-                    <li>
-                        <Link to="tasks" >Task Manager</Link>
-
-                    </li>
-                    <li>
-                        <Link to="plan" >Semester Plan</Link>    
-                    </li>
+                    <Link to="/" ><li>
+                        <img className="logo" src={logo} alt="Logo" /></li>
+                    </Link>
+                    <Link to="subjects" style={{ color: 'inherit', textDecoration: 'none'}}>
+                        <li>My Subjects</li>
+                    </Link>
+                    <Link to="tasks" style={{ color: 'inherit', textDecoration: 'none'}}>
+                        <li>Task Manager</li>
+                    </Link>
+                    <Link to="plan" style={{ color: 'inherit', textDecoration: 'none'}}>
+                        <li>Semester Plan</li>
+                    </Link>   
                 </ul>
             </div>
             <Outlet />

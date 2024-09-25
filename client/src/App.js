@@ -13,6 +13,15 @@ import UpdateSubjectPage from './operation_pages/UpdateSubjectPage';
 import TasksPage from './pages/TasksPage';
 import SemesterPlanPage from './pages/SemesterPlanPage';
 
+// import the library
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+// import your icons
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { faL } from '@fortawesome/free-solid-svg-icons';
+
 function App() {
   return (
     <BrowserRouter>
@@ -40,3 +49,5 @@ function App() {
 }
 
 export default App;
+
+library.add(fab, fas, far, faL);

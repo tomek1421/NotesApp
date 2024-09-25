@@ -1,0 +1,26 @@
+[
+    {
+        "title": "School Schedule",
+        "text": "Create and manage your personalized school timetable.",
+        "icon": "fa-solid fa-pencil",
+        "backgroundColor": "#dcf3ff",
+        "color": "#1c8dff",
+        "link": "plan"
+    },
+    {
+        "title": "Text Editor",
+        "text": "Write and edit notes with our rich editor that supports code highlighting.",
+        "icon": "fa-solid fa-code",
+        "backgroundColor": "#ffdcf0",
+        "color": "fa54b2",
+        "link": "subjects"
+    },
+    {
+        "title": "To-Do List",
+        "text": "Manage your tasks with a simple, intuitive to-do list.",
+        "icon": "fa-solid fa-calendar-check",
+        "backgroundColor": "#e8dcff",
+        "color": "#8d4fff",
+        "link": "tasks"
+    }
+]

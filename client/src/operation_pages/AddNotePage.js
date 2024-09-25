@@ -74,6 +74,8 @@ function AddNotePage() {
         setTimeout(() => navigate(`/subjects/${subjectId}/notes`), 1200);
     }
 
+    const titleStyle = error.noteTitle ? {border: "1px solid red"} : null;
+
     return (
         <div className="flex-center align-center width-max">
             <div className="operation-container" >
@@ -88,13 +90,14 @@ function AddNotePage() {
                                 placeholder="subject name"
                                 value={formData.noteTitle}
                                 onChange={handleChange}
+                                style={titleStyle}
                             />
                             <div className="input-error" >{ error.noteTitle && error.noteTitle }</div>
                         </div>
                     </div>
                     <div className="flex-operation-buttons" >
-                        <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >cancel</button></Link>
-                        <button type="submit" className="full-button" >create</button>
+                        <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >Cancel</button></Link>
+                        <button type="submit" className="full-button" >Create</button>
                     </div>
                 </form>
                 <Toaster />
