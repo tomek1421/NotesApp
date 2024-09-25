@@ -14,6 +14,9 @@ public class Subject
     [StringLength(300)]
     public string? SubjectDescription { get; set; }
     
+    [StringLength(30)]
+    public string? DateOfCreation { get; set; }
+    
     // navigation property
     public virtual ICollection<Note>? Notes { get; set; }
 }

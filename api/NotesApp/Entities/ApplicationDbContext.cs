@@ -27,6 +27,7 @@ public class ApplicationDbContext : DbContext
             SubjectId = Guid.Parse("7FB0C231-415F-4DD7-8071-00B87C63A7C8"),
             SubjectName = "Default Subject",
             SubjectDescription = "Default Subject Description",
+            DateOfCreation = "21/09/2024",
         };
         
         modelBuilder.Entity<Subject>().HasData(subject);

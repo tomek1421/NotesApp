@@ -32,6 +32,9 @@ public class SubjectsService : ISubjectsService
         //generate SubjectId
         subject.SubjectId = Guid.NewGuid();
         
+        //get date of creation
+        subject.DateOfCreation = DateTime.Now.ToString("dd/MM/yyyy");
+        
         _subjectsRepository.AddSubject(subject);
         
         return subject.ToSubjectResponse();

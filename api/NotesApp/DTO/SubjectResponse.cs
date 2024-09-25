@@ -9,6 +9,8 @@ public class SubjectResponse
     public string? SubjectName { get; set; }
     
     public string? SubjectDescription { get; set; }
+    
+    public string? DateOfCreation { get; set; }
 }
 
 public static class SubjectExtensions
@@ -19,7 +21,8 @@ public static class SubjectExtensions
         {
             SubjectId = subject.SubjectId,
             SubjectName = subject.SubjectName,
-            SubjectDescription = subject.SubjectDescription
+            SubjectDescription = subject.SubjectDescription,
+            DateOfCreation = subject.DateOfCreation
         };
         
         return subjectResponse;

@@ -10,6 +10,8 @@ public class SubjectWithNotesResponse
     
     public string? SubjectDescription { get; set; }
     
+    public string? DateOfCreation { get; set; }
+    
     public List<NoteResponse>? Notes { get; set; }
 }
 
@@ -22,6 +24,7 @@ static class SubjectExtension
             SubjectId = subject.SubjectId,
             SubjectName = subject.SubjectName,
             SubjectDescription = subject.SubjectDescription,
+            DateOfCreation = subject.DateOfCreation,
             Notes = notes
         };
     }
