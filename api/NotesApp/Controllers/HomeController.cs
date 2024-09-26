@@ -33,7 +33,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult GetSubjects()
     {
-        List<SubjectResponse> subjects = _subjectsService.GetAllSubjects();
+        List<SubjectWithNotesCountResponse> subjects = _subjectsService.GetAllSubjects();
         return Json(subjects);
     }
 

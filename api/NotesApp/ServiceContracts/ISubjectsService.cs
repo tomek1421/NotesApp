@@ -6,7 +6,7 @@ public interface ISubjectsService
 {
     SubjectResponse AddSubject(SubjectAddRequest? subjectAddRequest);
 
-    List<SubjectResponse> GetAllSubjects();
+    List<SubjectWithNotesCountResponse> GetAllSubjects();
     
     SubjectResponse? GetSubjectById(Guid? subjectId);
     

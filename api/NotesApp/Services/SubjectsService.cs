@@ -41,11 +41,11 @@ public class SubjectsService : ISubjectsService
         
     }
 
-    public List<SubjectResponse> GetAllSubjects()
+    public List<SubjectWithNotesCountResponse> GetAllSubjects()
     {
-        List<Subject> subject = _subjectsRepository.GetAllSubjects();
+        List<Subject> subjects = _subjectsRepository.GetAllSubjects();
         
-        return subject.Select(temp => temp.ToSubjectResponse()).ToList();
+        return subjects.Select(temp => temp.ToSubjectWithNotesCountResponse(temp?.Notes?.Count ?? 0)).ToList();
     }
 
     public SubjectResponse? GetSubjectById(Guid? subjectId)

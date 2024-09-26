@@ -26,7 +26,7 @@ public class SubjectsRepository : ISubjectsRepository
 
     public List<Subject> GetAllSubjects()
     {
-        return _db.Subjects.ToList();
+        return _db.Subjects.Include("Notes").ToList();
     }
 
     public Subject? GetSubjectById(Guid subjectId)
