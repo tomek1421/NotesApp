@@ -11,6 +11,8 @@ public class SubjectResponse
     public string? SubjectDescription { get; set; }
     
     public string? DateOfCreation { get; set; }
+    
+    public string? Hashtags { get; set; }
 }
 
 public static class SubjectExtensions
@@ -22,7 +24,8 @@ public static class SubjectExtensions
             SubjectId = subject.SubjectId,
             SubjectName = subject.SubjectName,
             SubjectDescription = subject.SubjectDescription,
-            DateOfCreation = subject.DateOfCreation
+            DateOfCreation = subject.DateOfCreation,
+            Hashtags = subject.Hashtags
         };
         
         return subjectResponse;

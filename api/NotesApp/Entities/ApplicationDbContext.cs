@@ -28,6 +28,7 @@ public class ApplicationDbContext : DbContext
             SubjectName = "Default Subject",
             SubjectDescription = "Default Subject Description",
             DateOfCreation = "21/09/2024",
+            Hashtags = "[\"daily\", \"math\", \"coding\"]"
         };
         
         modelBuilder.Entity<Subject>().HasData(subject);

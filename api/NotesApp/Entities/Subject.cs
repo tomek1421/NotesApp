@@ -17,6 +17,9 @@ public class Subject
     [StringLength(30)]
     public string? DateOfCreation { get; set; }
     
+    [StringLength(100)]
+    public string? Hashtags { get; set; }
+    
     // navigation property
     public virtual ICollection<Note>? Notes { get; set; }
 }

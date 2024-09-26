@@ -10,13 +10,17 @@ public class SubjectAddRequest
     
     [Required(ErrorMessage = "Subject Description can't be empty")]
     public string? SubjectDescription { get; set; }
+    
+    [Required(ErrorMessage = "Hashtags can't be empty")]
+    public string? Hashtags { get; set; }
 
     public Subject ToSubject()
     {
         return new Subject()
         {
             SubjectName = SubjectName,
-            SubjectDescription = SubjectDescription
+            SubjectDescription = SubjectDescription,
+            Hashtags = Hashtags
         };
     }
 }
