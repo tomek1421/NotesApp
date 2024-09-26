@@ -24,11 +24,13 @@ const Editor = forwardRef(
       const editorContainer = container.appendChild(
         container.ownerDocument.createElement('div'),
       );
+
       const quill = new Quill(editorContainer, {
         modules: {
             syntax: { hljs },
             toolbar: [
-                [{ header: [1, 2, false] }],
+                [{ header: [false, 2, 1] }],
+                [{ size: [false, 'large', 'huge'] }],
                 ['bold', 'italic', 'underline'],
                 ['link', 'blockquote', 'code-block', 'image'],
                 [{ list: 'ordered' }, { list: 'bullet' }]

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {  updateSubject, getSubjectWithNotes } from '../apiCalls/subjects';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-
+import { usePreviousLocation } from "../components/PreviousLocationContext";
 import toast, { Toaster } from "react-hot-toast";
 
 
@@ -20,6 +20,8 @@ function UpdateSubjectPage() {
     const { subjectId } = useParams();
 
     const navigate = useNavigate();
+
+    const prevLocation = usePreviousLocation();
 
     useEffect(() => {
         getSubjectWithNotes(subjectId)
@@ -81,8 +83,7 @@ function UpdateSubjectPage() {
                 duration: 1100
             });
         });
-        setTimeout(() => navigate(`/subjects/${subjectId}/notes`), 1200);
-        
+        setTimeout(() => navigate(prevLocation), 1200);
     }
 
     const nameStyle = error.subjectName ? {border: "1px solid red"} : null;
@@ -113,7 +114,7 @@ function UpdateSubjectPage() {
                                 placeholder="subject description"
                                 value={formData.subjectDescription}
                                 onChange={handleChange}
-                                rows="3"
+                                rows="4"
                                 style={descStyle}
                             >
                             </textarea>
@@ -121,7 +122,7 @@ function UpdateSubjectPage() {
                         </div>
                     </div>
                     <div className="flex-operation-buttons" >
-                        <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >Cancel</button></Link>
+                        <Link to={prevLocation} ><button className="cancel-button" >Cancel</button></Link>
                         <button type="submit" className="full-button" >Edit</button>
                     </div>
                 </form>

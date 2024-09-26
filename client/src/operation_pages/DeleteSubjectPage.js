@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom";
 import { deleteSubject } from "../apiCalls/subjects";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import toast, { Toaster } from "react-hot-toast";
+import { usePreviousLocation } from "../components/PreviousLocationContext";
 
 function DeleteSubjectPage() {
 
     const { subjectId } = useParams();
 
     const navigate = useNavigate();
+
+    const prevLocation = usePreviousLocation();
 
     function handleDelete() {
         deleteSubject(subjectId)
@@ -33,7 +35,7 @@ function DeleteSubjectPage() {
         });
         setTimeout(() => navigate("/subjects"), 1200);
     }
-
+    
     return (
         <div className="flex-center align-center width-max">
             <div className="operation-container" >

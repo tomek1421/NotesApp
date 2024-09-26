@@ -28,7 +28,7 @@
 }
 
 .outlet-container {
-    width: 80rem;
+    width: 79rem;
     /* border: 2px solid blueviolet; */
 }
 
@@ -199,6 +199,13 @@ button:hover {
 }
 
 #editor {
+    background-color: white;
+}
+
+.ql-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     background-color: white;
 }
 
