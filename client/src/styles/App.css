@@ -74,7 +74,7 @@ button {
     color: #1c8dff;
     font-size: 1.2rem;
     border: 1px solid #1c8dff;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
     transition: 0.2s;
   }
   
@@ -123,6 +123,36 @@ button:hover {
 
 .cancel-button:hover {
     background-color: #3c3c3c;
+}
+
+.operation-button {
+    background-color: transparent;
+    color: #3c3c3c;
+    border: 1px solid transparent;
+}
+
+.operation-button:hover {
+    background-color: #ededed;
+    color: #3c3c3c;
+    border: 1px solid #ededed;
+}
+
+.search-full-button {
+    background-color: transparent;
+    color: black;
+    border: none;
+    display: flex;
+}
+
+.search-full-button:hover {
+    background-color: #ededed;
+    color: black;
+    border: none;
+}
+
+.search-full-button:hover div {
+    transition: 0.2s;
+    transform: scale(1.2);
 }
 
 .subject-button {
@@ -264,6 +294,7 @@ button span {
     padding: 1rem 2rem;
     font-size: 1.5rem;
     border-width: 2px;
+    border-radius: 2rem;
 }
 
 .home-section {

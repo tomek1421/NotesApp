@@ -37,17 +37,13 @@ function SubjectPage() {
         hashtagsArray = []
     }
 
-    // console.log(subjectData)
-    // console.log(JSON.parse("[\"daily\"]"))
-    // console.log(subjectData.hashtags === "[\"daily\"]")
-
     return (
         <div className="flex-center">
             <div className="outlet-container">
                 <div className="header-section-line">
                     <h1>{subjectData.subjectName}</h1>
                     <div>
-                        <Link to={`/subjects/${subjectId}/edit`} ><button className="cancel-button" ><span>Edit</span><FontAwesomeIcon icon="fa-solid fa-pen-to-square" /></button></Link>
+                        <Link to={`/subjects/${subjectId}/edit-subject`} ><button className="operation-button" ><span>Edit</span><FontAwesomeIcon icon="fa-solid fa-pen-to-square" /></button></Link>
                         <Link to="/subjects" ><button className="cancel-button" ><span>Subjects</span><FontAwesomeIcon icon="fa-right-from-bracket" /></button></Link>
                     </div>
                 </div>
@@ -68,7 +64,7 @@ function SubjectPage() {
                 </div>
                 <div className="header-section-line">
                     <h1 className="h1-notes" >Notes</h1>
-                    <Link to="add-note" ><button>Create note</button></Link>
+                    <Link to="add-note" ><button><span>Create note</span><FontAwesomeIcon icon="fa-solid fa-file-circle-plus" /></button></Link>
                 </div>
                 {
                     <div className="notes-list" >

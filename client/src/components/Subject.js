@@ -5,7 +5,7 @@ import hashtagsJson from "../json/hashtags"
 
 function Subject({ subjectName, subjectId, dateOfCreation, hashtags, notesCount }) {
     
-    console.log(hashtags)
+    // console.log(hashtags)
 
     const hashtagsArray = JSON.parse(hashtags);
 
@@ -14,7 +14,7 @@ function Subject({ subjectName, subjectId, dateOfCreation, hashtags, notesCount 
             <div className="header" >
                 <h2>{subjectName}</h2>
                 <div>
-                    <Link to={`${subjectId}/edit`} style={{ color: 'inherit', textDecoration: 'inherit'}}><FontAwesomeIcon icon="fa-regular fa-pen-to-square" size="xl" /></Link>
+                    <Link to={`${subjectId}/edit-subject`} style={{ color: 'inherit', textDecoration: 'inherit'}}><FontAwesomeIcon icon="fa-regular fa-pen-to-square" size="xl" /></Link>
                     <Link to={`${subjectId}/delete-subject`} style={{ color: 'inherit', textDecoration: 'inherit'}}><FontAwesomeIcon icon="fa-regular fa-trash-can" size="xl" /></Link>
                 </div>
             </div>

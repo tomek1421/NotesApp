@@ -5,7 +5,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 500;
+  overflow-y: scroll;
 }
 
 code {
@@ -28,20 +29,44 @@ h2 {
   margin-bottom: 0rem;
 }
 
+h3 {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
 input[type=text] {
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   font-weight: 400;
   border: 1px solid #898989;
   border-radius: 0.5rem;
+  border-color: #d2d2d2;
 }
 
 textarea {
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   font-family: 'roboto';
   font-weight: 400;
   resize: none;
   border: 1px solid #898989;
   border-radius: 0.5rem;
+  border-color: #d2d2d2;
+}
+
+select {
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-weight: 400;
+  border: 1px solid #898989;
+  border-radius: 0.5rem;
+  appearance: none; /* Remove default arrow */
+  -moz-appearance: none; /* Remove default arrow for Firefox */
+  -webkit-appearance: none; /* Remove default arrow for Safari/Chrome */
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEuNSAyLjVsNi41IDYuNWw2LjUtNi41IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K') no-repeat;
+  background-position: calc(100% - 1rem) 0.7rem; /* Position arrow 0.5rem to the left */
+  background-size: 1rem; /* Size of the arrow */
+  width: 100%;
+  background-color: white;
+  border-color: #d2d2d2;
 }

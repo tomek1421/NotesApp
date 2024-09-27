@@ -5,7 +5,7 @@ import { usePreviousLocation } from "../components/PreviousLocationContext";
 import toast, { Toaster } from "react-hot-toast";
 
 
-function UpdateSubjectPage() {
+function EditSubjectPage() {
 
     const [formData, setFormData] = useState({
         subjectName: "",
@@ -132,4 +132,4 @@ function UpdateSubjectPage() {
     )
 }
 
-export default UpdateSubjectPage;
+export default EditSubjectPage;

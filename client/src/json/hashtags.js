@@ -22,6 +22,10 @@ const hashtags = {
     "university": {
         "color": "#4440ff",
         "icon": "fa-solid fa-graduation-cap"
+    },
+    "5th_semester": {
+        "color": "#00a6e4",
+        "icon": "fa-solid fa-calendar-days"
     }
     // "other": {
     //     "color": "#595959",
