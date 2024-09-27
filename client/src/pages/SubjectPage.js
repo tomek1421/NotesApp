@@ -55,7 +55,7 @@ function SubjectPage() {
                     <div className="subject-props" >
                         <div className="subject-desc" >{subjectData.subjectDescription}</div>
                         <div className="datails" >
-                            <div className="details-item" >13 notes</div>
+                            <div className="details-item" >{`${subjectData.notes.length} ${subjectData.notes.length == 1 ? "note" : "notes"}`}</div>
                             <div className="details-item" >{`created ${subjectData.dateOfCreation}`}</div>
                         </div>
                     </div>

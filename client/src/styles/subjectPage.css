@@ -1,6 +1,6 @@
 .subject-tile {
     width: 25rem;
-    height: 17rem;
+    height: 19rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,16 +17,24 @@
 .subject-tile .header {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     align-items: center;
     /* border: 1px solid red; */
+}
+
+.subject-tile .header h2 {
+    height: 4.5rem;
+    /* border: 1px solid blue; */
+    overflow: hidden;
 }
 
 .subject-tile .header div {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    /* border: 1px solid red; */
+    align-self: flex-start;
     height: fit-content;
+    /* border: 1px solid blue; */
 }
 
 .subject-tile .header div > *:hover {
@@ -185,7 +193,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     transition: box-shadow 0.5s;
 }
 

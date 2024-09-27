@@ -1,7 +1,7 @@
 import bird from "../assets/photos/bird.jpg";
 import HomeTile from "../components/HomeTile";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import homeTiles from "../json/homeTiles.json";
+import homeTiles from "../json/home-tiles.json";
 import Footer from "../components/Footer";
 import { Link, Element } from 'react-scroll'
 
