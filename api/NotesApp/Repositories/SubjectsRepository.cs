@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using NotesApp.DTO;
 using NotesApp.Entities;
@@ -27,6 +28,11 @@ public class SubjectsRepository : ISubjectsRepository
     public List<Subject> GetAllSubjects()
     {
         return _db.Subjects.Include("Notes").ToList();
+    }
+
+    public List<Subject> GetFilteredSubjects(Func<Subject, bool> predicate)
+    {
+        return _db.Subjects.Include("Notes").Where(predicate).ToList();
     }
 
     public Subject? GetSubjectById(Guid subjectId)

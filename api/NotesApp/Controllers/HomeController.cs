@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesApp.DTO;
 using NotesApp.Entities;
+using NotesApp.Enums;
 using NotesApp.RepositoryContracts;
 using NotesApp.ServiceContracts;
 
@@ -31,10 +32,15 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public IActionResult GetSubjects()
+    public IActionResult GetSubjects([FromQuery] string searchBy = nameof(SubjectWithNotesCountResponse.SubjectName), [FromQuery] string searchString = "", [FromQuery] string sortBy = nameof(SubjectWithNotesCountResponse.SubjectName), [FromQuery] SortOrderOptions sortOrder = SortOrderOptions.ASC)
     {
-        List<SubjectWithNotesCountResponse> subjects = _subjectsService.GetAllSubjects();
-        return Json(subjects);
+        
+        List<SubjectWithNotesCountResponse> subjects = _subjectsService.GetFilteredSubjects(searchBy, searchString);
+        
+        List<SubjectWithNotesCountResponse> sortedSubjects = _subjectsService.GetSortedSubjects(subjects, sortBy, sortOrder);
+        
+        return Json(sortedSubjects);
+        
     }
 
     [HttpPost]

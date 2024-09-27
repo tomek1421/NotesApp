@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using NotesApp.Entities;
 
 namespace NotesApp.RepositoryContracts;
@@ -11,6 +12,9 @@ public interface ISubjectsRepository
     Subject AddSubject(Subject subject);
     
     List<Subject> GetAllSubjects();
+    
+    /*Expression<Func<Subject, bool>>*/
+    List<Subject> GetFilteredSubjects(Func<Subject, bool> predicate);
     
     Subject? GetSubjectById(Guid subjectId);
     

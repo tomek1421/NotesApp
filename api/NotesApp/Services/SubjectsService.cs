@@ -1,5 +1,7 @@
+using System.Text.Json;
 using NotesApp.DTO;
 using NotesApp.Entities;
+using NotesApp.Enums;
 using NotesApp.Helpers;
 using NotesApp.RepositoryContracts;
 using NotesApp.ServiceContracts;
@@ -46,6 +48,86 @@ public class SubjectsService : ISubjectsService
         List<Subject> subjects = _subjectsRepository.GetAllSubjects();
         
         return subjects.Select(temp => temp.ToSubjectWithNotesCountResponse(temp?.Notes?.Count ?? 0)).ToList();
+    }
+
+    public List<SubjectWithNotesCountResponse> GetFilteredSubjects(string searchBy, string searchString)
+    {
+        List<Subject> filteredSubjects = searchBy switch
+        {
+            nameof(Subject.SubjectName) => _subjectsRepository.GetFilteredSubjects(temp =>
+                temp.SubjectName != null && temp.SubjectName.ToLower().Contains(searchString.ToLower())),
+
+            nameof(Subject.Hashtags) => _subjectsRepository.GetFilteredSubjects(temp =>
+            {
+                if (temp.Hashtags == null)
+                    return false;
+                
+                List<string>? hashtagsList = JsonSerializer.Deserialize<List<string>>(temp.Hashtags);
+
+                if (hashtagsList == null)
+                    return false;
+                
+                return hashtagsList.Contains(searchString);
+            }),
+            
+            _ => _subjectsRepository.GetAllSubjects()
+            
+        };
+
+        return filteredSubjects.Select(temp => temp.ToSubjectWithNotesCountResponse(temp?.Notes?.Count ?? 0)).ToList();
+    }
+
+    public List<SubjectWithNotesCountResponse> GetSortedSubjects(List<SubjectWithNotesCountResponse> subjects, string sortBy, SortOrderOptions sortOrder)
+    {
+        return (sortBy, sortOrder) switch
+        {
+            (nameof(SubjectWithNotesCountResponse.SubjectName), SortOrderOptions.ASC) => subjects.OrderBy(temp => temp.SubjectName).ToList(),
+            (nameof(SubjectWithNotesCountResponse.SubjectName), SortOrderOptions.DESC) => subjects.OrderByDescending(temp => temp.SubjectName).ToList(),
+            (nameof(SubjectWithNotesCountResponse.NotesCount), SortOrderOptions.ASC) => subjects.OrderBy(temp => temp.NotesCount).ToList(),
+            (nameof(SubjectWithNotesCountResponse.NotesCount), SortOrderOptions.DESC) => subjects.OrderByDescending(temp => temp.NotesCount).ToList(),
+            (nameof(SubjectWithNotesCountResponse.DateOfCreation), SortOrderOptions.ASC) => subjects.OrderBy(temp =>
+            {
+                DateTime dateTime;
+                
+                if (string.IsNullOrEmpty(temp.DateOfCreation))
+                {
+                    return DateTime.MinValue;
+                }
+
+                try
+                {
+                    dateTime = DateTime.Parse(temp.DateOfCreation);
+                }
+                catch (Exception)
+                {
+                    dateTime = DateTime.MinValue;
+                }
+                
+                return dateTime;
+
+            }).ToList(),
+            (nameof(SubjectWithNotesCountResponse.DateOfCreation), SortOrderOptions.DESC) => subjects.OrderByDescending(temp =>
+            {
+                DateTime dateTime;
+                
+                if (string.IsNullOrEmpty(temp.DateOfCreation))
+                {
+                    return DateTime.MinValue;
+                }
+
+                try
+                {
+                    dateTime = DateTime.Parse(temp.DateOfCreation);
+                }
+                catch (Exception)
+                {
+                    dateTime = DateTime.MinValue;
+                }
+                
+                return dateTime;
+
+            }).ToList(),
+        };
     }
 
     public SubjectResponse? GetSubjectById(Guid? subjectId)
