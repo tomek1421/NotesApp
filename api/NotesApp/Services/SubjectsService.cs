@@ -55,7 +55,7 @@ public class SubjectsService : ISubjectsService
         List<Subject> filteredSubjects = searchBy switch
         {
             nameof(Subject.SubjectName) => _subjectsRepository.GetFilteredSubjects(temp =>
-                temp.SubjectName != null && temp.SubjectName.ToLower().Contains(searchString.ToLower())),
+                temp.SubjectName != null && temp.SubjectName.Contains(searchString, StringComparison.OrdinalIgnoreCase)),
 
             nameof(Subject.Hashtags) => _subjectsRepository.GetFilteredSubjects(temp =>
             {
@@ -66,8 +66,8 @@ public class SubjectsService : ISubjectsService
 
                 if (hashtagsList == null)
                     return false;
-                
-                return hashtagsList.Contains(searchString);
+
+                return hashtagsList.Any(hash => hash.Contains(searchString, StringComparison.OrdinalIgnoreCase));
             }),
             
             _ => _subjectsRepository.GetAllSubjects()
