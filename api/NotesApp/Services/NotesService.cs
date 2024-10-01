@@ -104,7 +104,7 @@ public class NotesService : INotesService
         
         //TODO
         //return this as noteResponse
-        _notesRepository.UpdateNoteContent(matchingNote);
+        _notesRepository.UpdateNoteTitle(matchingNote);
         
         return matchingNote.ToNoteResponse();
     }
