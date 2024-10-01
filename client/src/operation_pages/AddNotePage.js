@@ -83,11 +83,11 @@ function AddNotePage() {
                     <h2>Create Note</h2>
                     <div className="operation-inputs" >
                         <div className="operation-flex-column">
-                            <label>Subject name</label>
+                            <label>Note name</label>
                             <input 
                                 type="text"
                                 name="subjectName"
-                                placeholder="subject name"
+                                placeholder="note name"
                                 value={formData.noteTitle}
                                 onChange={handleChange}
                                 style={titleStyle}

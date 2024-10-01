@@ -9,7 +9,7 @@ function Note({ noteId, noteTitle }) {
                 <div className="note-left" >
                     <div>
                         <div className="date" >created 24.03.24</div>
-                        <Link to={``} ><button className="operation-button" ><span>Edit</span><FontAwesomeIcon icon="fa-solid fa-pen-to-square" /></button></Link>
+                        <Link to={`${noteId}/edit-note`} ><button className="operation-button" ><span>Edit</span><FontAwesomeIcon icon="fa-solid fa-pen-to-square" /></button></Link>
                         <Link to={`${noteId}/delete-note`} ><button className="delete-button" >Delete</button></Link>
                     </div>
                 </div>

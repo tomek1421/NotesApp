@@ -51,7 +51,7 @@ function NotePage() {
         event.preventDefault();
         if (lastChange.ops.length == 0) return;
         const stringifyJson = JSON.stringify(quillRef.current?.getContents().ops);
-        saveNote(subjectId, noteId, { noteTitle: noteData.noteTitle, noteContent: stringifyJson })
+        saveNote(subjectId, noteId, { noteContent: stringifyJson })
         .then(msg => {
             console.log(msg.data);
             toast.success('Your note have been saved!', {

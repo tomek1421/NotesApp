@@ -120,6 +120,7 @@ function AddSubjectPage() {
                             <label>Hashtags</label>
                             <div className="hashtag-input" >
                                 <select 
+                                    className="select"
                                     name="hashtags"
                                     value=""
                                     onChange={handleAddHashtag}

@@ -73,6 +73,7 @@ function AllSubjectsPage() {
                         <div>
                             <div>Search by</div>
                             <select 
+                                className="select"
                                 name="searchBy"
                                 value={queryParams.searchBy}
                                 onChange={handleChange}
@@ -84,6 +85,7 @@ function AllSubjectsPage() {
                         <div>
                             <div>Sort By</div>
                             <select 
+                                className="select"
                                 name="sortBy"
                                 value={queryParams.sortBy}
                                 onChange={handleChange}
@@ -95,7 +97,8 @@ function AllSubjectsPage() {
                         </div>
                         <div>
                             <div>Sort Order</div>
-                            <select 
+                            <select
+                                className="select"
                                 name="sortOrder"
                                 value={queryParams.sortOrder}
                                 onChange={handleChange}

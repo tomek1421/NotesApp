@@ -54,18 +54,18 @@ textarea {
   border-color: #d2d2d2;
 }
 
-select {
+.select {
   font-size: 1rem;
   padding: 0.5rem;
   font-weight: 400;
   border: 1px solid #898989;
   border-radius: 0.5rem;
-  appearance: none; /* Remove default arrow */
-  -moz-appearance: none; /* Remove default arrow for Firefox */
-  -webkit-appearance: none; /* Remove default arrow for Safari/Chrome */
+  appearance: none; 
+  -moz-appearance: none; 
+  -webkit-appearance: none; 
   background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEuNSAyLjVsNi41IDYuNWw2LjUtNi41IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K') no-repeat;
-  background-position: calc(100% - 1rem) 0.7rem; /* Position arrow 0.5rem to the left */
-  background-size: 1rem; /* Size of the arrow */
+  background-position: calc(100% - 1rem) 0.7rem;
+  background-size: 1rem; 
   width: 100%;
   background-color: white;
   border-color: #d2d2d2;
