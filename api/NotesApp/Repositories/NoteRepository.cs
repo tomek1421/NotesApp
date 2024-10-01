@@ -29,7 +29,20 @@ public class NoteRepository : INotesRepository
         return _db.Notes.FirstOrDefault(temp => temp.SubjectId == subjectId && temp.NoteId == noteId);
     }
 
-    public Note UpdateNote(Note note)
+    public Note UpdateNoteContent(Note note)
+    {
+        Note? matchingNote = _db.Notes.FirstOrDefault(temp => temp.SubjectId == note.SubjectId && temp.NoteId == note.NoteId);
+
+        if (matchingNote == null)
+            return note;
+        
+        matchingNote.NoteContent = note.NoteContent;
+        
+        _db.SaveChanges();
+        return matchingNote;
+    }
+
+    public Note UpdateNoteTitle(Note note)
     {
         Note? matchingNote = _db.Notes.FirstOrDefault(temp => temp.SubjectId == note.SubjectId && temp.NoteId == note.NoteId);
 
@@ -37,7 +50,6 @@ public class NoteRepository : INotesRepository
             return note;
         
         matchingNote.NoteTitle = note.NoteTitle;
-        matchingNote.NoteContent = note.NoteContent;
         
         _db.SaveChanges();
         return matchingNote;

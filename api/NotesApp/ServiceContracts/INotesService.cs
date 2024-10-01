@@ -8,7 +8,8 @@ public interface INotesService
     
     NoteResponse? GetNoteById(Guid? subjectId, Guid? noteId);
     
-    NoteResponse UpdateNote(Guid? subjectId, Guid? noteId, NoteUpdateRequest? noteUpdateRequest);
+    NoteResponse UpdateNoteContent(Guid? subjectId, Guid? noteId, NoteUpdateContentRequest? noteUpdateRequest);
+    NoteResponse UpdateNoteTitle(Guid? subjectId, Guid? noteId, NoteUpdateTitleRequest? noteUpdateRequest);
     
     bool DeleteNote(Guid? subjectId, Guid? noteId);
 }

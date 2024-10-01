@@ -160,7 +160,7 @@ public class HomeController : Controller
 
     [HttpPut]
     [Route("{subjectId}/notes/{noteId}")]
-    public IActionResult UpdateNote([FromRoute] Guid subjectId, [FromRoute] Guid noteId, [FromBody] NoteUpdateRequest noteUpdateRequest)
+    public IActionResult UpdateNoteContent([FromRoute] Guid subjectId, [FromRoute] Guid noteId, [FromBody] NoteUpdateContentRequest noteUpdateContentRequest)
     {
         if (!ModelState.IsValid)
         {
@@ -177,7 +177,31 @@ public class HomeController : Controller
             return BadRequest(errors);
         }
         
-        NoteResponse noteResponse = _notesService.UpdateNote(subjectId, noteId, noteUpdateRequest);
+        NoteResponse noteResponse = _notesService.UpdateNoteContent(subjectId, noteId, noteUpdateContentRequest);
+        
+        return Json(noteResponse);
+    }
+    
+    [HttpPut]
+    [Route("{subjectId}/notes/{noteId}/title")]
+    public IActionResult UpdateNoteTitle([FromRoute] Guid subjectId, [FromRoute] Guid noteId, [FromBody] NoteUpdateTitleRequest noteUpdateRequest)
+    {
+        if (!ModelState.IsValid)
+        {
+            List<string> errorsList = new List<string>();
+            foreach (var value in ModelState.Values)
+            {
+                foreach (var error in value.Errors)
+                {
+                    errorsList.Add(error.ErrorMessage);
+                }
+            }
+
+            string errors = string.Join("\n", errorsList);
+            return BadRequest(errors);
+        }
+        
+        NoteResponse noteResponse = _notesService.UpdateNoteTitle(subjectId, noteId, noteUpdateRequest);
         
         return Json(noteResponse);
     }

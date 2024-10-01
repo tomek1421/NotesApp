@@ -56,7 +56,7 @@ public class NotesService : INotesService
 
     }
 
-    public NoteResponse UpdateNote(Guid? subjectId, Guid? noteId, NoteUpdateRequest? noteUpdateRequest)
+    public NoteResponse UpdateNoteContent(Guid? subjectId, Guid? noteId, NoteUpdateContentRequest? noteUpdateRequest)
     {
         if (subjectId == null || noteId == null || noteUpdateRequest == null)
             throw new ArgumentNullException();
@@ -73,15 +73,40 @@ public class NotesService : INotesService
         if (matchingNote == null)
             throw new ArgumentException("Given note id does not exist");
         
-        matchingNote.NoteTitle = noteUpdateRequest.NoteTitle;
         matchingNote.NoteContent = noteUpdateRequest.NoteContent;
         
         //TODO
         //return this as noteResponse
-        _notesRepository.UpdateNote(matchingNote);
+        _notesRepository.UpdateNoteContent(matchingNote);
         
         return matchingNote.ToNoteResponse();
 
+    }
+
+    public NoteResponse UpdateNoteTitle(Guid? subjectId, Guid? noteId, NoteUpdateTitleRequest? noteUpdateRequest)
+    {
+        if (subjectId == null || noteId == null || noteUpdateRequest == null)
+            throw new ArgumentNullException();
+        
+        //validation
+        ValidationHelper.ModelValidation(noteUpdateRequest);
+        
+        //get matching Note
+        Note? matchingNote = _notesRepository.GetNoteById(subjectId.Value, noteId.Value);
+        
+        //Change to message instead exception
+        //maybe return null
+        
+        if (matchingNote == null)
+            throw new ArgumentException("Given note id does not exist");
+
+        matchingNote.NoteTitle = noteUpdateRequest.NoteTitle;
+        
+        //TODO
+        //return this as noteResponse
+        _notesRepository.UpdateNoteContent(matchingNote);
+        
+        return matchingNote.ToNoteResponse();
     }
 
     public bool DeleteNote(Guid? subjectId, Guid? noteId)

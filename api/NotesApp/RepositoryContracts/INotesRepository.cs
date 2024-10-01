@@ -8,7 +8,8 @@ public interface INotesRepository
     
     Note? GetNoteById(Guid subjectId, Guid noteId);
     
-    Note UpdateNote(Note note);
+    Note UpdateNoteContent(Note note);
+    Note UpdateNoteTitle(Note note);
     
     bool DeleteNote(Guid subjectId, Guid noteId);
 }
