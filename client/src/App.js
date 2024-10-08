@@ -12,7 +12,7 @@ import AddNotePage from './operation_pages/AddNotePage';
 import DeleteNotePage from './operation_pages/DeleteNotePage';
 import EditNotePage from './operation_pages/EditNotePage';
 import TasksPage from './pages/TasksPage';
-import SemesterPlanPage from './pages/SemesterPlanPage';
+import TimetablePage from './pages/TimetablePage';
 import { PreviousLocationProvider } from './components/PreviousLocationContext';
 
 // import the library
@@ -45,7 +45,7 @@ function App() {
               </Route>
             </Route>
             <Route path="tasks" element={<TasksPage />} />
-            <Route path="plan" element={<SemesterPlanPage />} />
+            <Route path="plan" element={<TimetablePage />} />
           </Route>
         </Routes>
       </PreviousLocationProvider>

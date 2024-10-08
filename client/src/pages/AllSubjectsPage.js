@@ -79,7 +79,7 @@ function AllSubjectsPage() {
                                 onChange={handleChange}
                             >
                                 <option value="SubjectName" >Subject name</option>
-                                <option value="Hashtags" >Hashtags</option>
+                                <option value="Hashtags" >Tags</option>
                             </select>
                         </div>
                         <div>

@@ -68,7 +68,7 @@ function SubjectPage() {
                 </div>
                 {
                     <div className="notes-list" >
-                        { subjectData.notes.map(note => <Note noteId={note.noteId} noteTitle={note.noteTitle} /> ) }
+                        { subjectData.notes.map(note => <Note noteId={note.noteId} noteTitle={note.noteTitle} dateOfCreation={note.dateOfCreation} /> ) }
                     </div>
                 }
                 

@@ -117,7 +117,7 @@ function AddSubjectPage() {
                             <div className="input-error" >{ error.subjectName && error.subjectName }</div>
                         </div>
                         <div className="operation-flex-column">
-                            <label>Hashtags</label>
+                            <label>Tags</label>
                             <div className="hashtag-input" >
                                 <select 
                                     className="select"
@@ -125,7 +125,7 @@ function AddSubjectPage() {
                                     value=""
                                     onChange={handleAddHashtag}
                                 >
-                                    <option value="" disabled>Select hashtag</option>
+                                    <option value="" disabled>Select tag</option>
                                     {
                                         hashtagsOptions.map((key, index) => <option value={key} >{key}</option>)
                                     }
