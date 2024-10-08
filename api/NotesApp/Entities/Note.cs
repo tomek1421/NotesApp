@@ -17,6 +17,9 @@ public class Note
     //foreign key property
     public Guid? SubjectId { get; set; }
     
+    [StringLength(30)]
+    public string? DateOfCreation { get; set; }
+    
     //navigation property
     public virtual Subject? Subject { get; set; } // This makes SubjectId a foreign key
 }

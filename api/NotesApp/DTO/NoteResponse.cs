@@ -10,6 +10,8 @@ public class NoteResponse
     
     public string? NoteContent { get; set; }
     
+    public string? DateOfCreation { get; set; }
+    
     public Guid? SubjectId { get; set; }
     
 }
@@ -23,6 +25,7 @@ public static class NoteExtensions
             NoteId = note.NoteId,
             NoteTitle = note.NoteTitle,
             NoteContent = note.NoteContent,
+            DateOfCreation = note.DateOfCreation,
             SubjectId = note.SubjectId
         };
         

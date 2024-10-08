@@ -34,6 +34,9 @@ public class NotesService : INotesService
         //reassign Note to Subject
         note.SubjectId = subjectId;
         
+        //get date of creation
+        note.DateOfCreation = DateTime.Now.ToString("dd/MM/yyyy");
+        
         //TODO
         //return this as noteResponse
         _notesRepository.AddNote(note);
