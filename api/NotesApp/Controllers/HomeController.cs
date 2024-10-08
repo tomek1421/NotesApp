@@ -8,7 +8,6 @@ using NotesApp.ServiceContracts;
 
 namespace NotesApp.Controllers;
 
-[EnableCors("MyPolicy")]
 [Controller]
 [Route("subjects")]
 public class HomeController : Controller
