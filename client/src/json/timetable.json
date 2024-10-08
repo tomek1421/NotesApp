@@ -1,0 +1,111 @@
+
+[
+    {
+        "lectureName": "Programowanie współbieżne",
+        "teacher": "dr Paweł Pączkowski",
+        "lectureRoom":"1.14",
+        "type": "lecture",
+        "day":"Monday",
+        "startTime":"12:00",
+        "endTime":"13:30"
+    },
+    {
+        "lectureName": "Programowanie współbieżne",
+        "teacher": "dr Paweł Pączkowski",
+        "lectureRoom":"3.04",
+        "type": "practise",
+        "day":"Monday",
+        "startTime":"14:00",
+        "endTime":"15:30"
+    },
+    {
+        "lectureName": "Jak osiągnąć wolność finansową",
+        "teacher": "Adam Barembruch",
+        "lectureRoom":"home",
+        "type": "lecture",
+        "day":"Monday",
+        "startTime":"17:00",
+        "endTime":"18:30"
+    },
+    {
+        "lectureName": "Technologie sieci Web",
+        "teacher": "dr Wiesław Pawłowski",
+        "lectureRoom":"1.14",
+        "type": "lecture",
+        "day":"Tuesday",
+        "startTime":"16:00",
+        "endTime":"17:30"
+    },
+    {
+        "lectureName": "Aplikacje przemysłowe",
+        "teacher": "dr Jakub Neumann",
+        "lectureRoom":"3.13",
+        "type": "practise",
+        "day":"Wednesday",
+        "startTime":"10:15",
+        "endTime":"11:45"
+    },
+    {
+        "lectureName": "Aplikacje przemysłowe",
+        "teacher": "dr Jakub Neumann",
+        "lectureRoom":"1.15",
+        "type": "lecture",
+        "day":"Wednesday",
+        "startTime":"12:00",
+        "endTime":"13:30"
+    },
+    {
+        "lectureName": "Projekt zespołowy",
+        "teacher": "mgr Konrad Sołtys",
+        "lectureRoom":"3.11",
+        "type": "practise",
+        "day":"Wednesday",
+        "startTime":"14:00",
+        "endTime":"15:30"
+    },
+    {
+        "lectureName": "Technologie sieci Web",
+        "teacher": "dr Wiesław Pawłowski",
+        "lectureRoom":"3.04",
+        "type": "practise",
+        "day":"Wednesday",
+        "startTime":"16:00",
+        "endTime":"17:30"
+    },
+    {
+        "lectureName": "Analiza i projektowanie systemów informatycznych",
+        "teacher": "dr Stanisław Witkowski",
+        "lectureRoom":"1.14",
+        "type": "lecture",
+        "day":"Friday",
+        "startTime":"9:00",
+        "endTime":"10:00"
+    },
+    {
+        "lectureName": "Analiza i projektowanie systemów informatycznych",
+        "teacher": "dr Stanisław Witkowski",
+        "lectureRoom":"3.04",
+        "type": "practise",
+        "day":"Friday",
+        "startTime":"12:00",
+        "endTime":"13:30"
+    },
+    {
+        "lectureName": "Frontend developement II",
+        "teacher": "mgr Aleksandra Tejszerska",
+        "lectureRoom":"3.11",
+        "type": "practise",
+        "day":"Friday",
+        "startTime":"14:00",
+        "endTime":"15:30"
+    },
+    {
+        "lectureName": "Frontend developement II",
+        "teacher": "mgr Aleksandra Tejszerska",
+        "lectureRoom":"1.15",
+        "type": "lecture",
+        "day":"Friday",
+        "startTime":"16:00",
+        "endTime":"17:30"
+    }
+]
