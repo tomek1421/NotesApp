@@ -6,6 +6,8 @@ public class ApplicationDbContext : DbContext
 {
     public virtual DbSet<Subject> Subjects { get; set; }
     public virtual DbSet<Note> Notes { get; set; }
+    
+    public virtual DbSet<TimetableEvent> TimetableEvents { get; set; }
 
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
@@ -20,6 +22,7 @@ public class ApplicationDbContext : DbContext
     {
         modelBuilder.Entity<Subject>().ToTable("Subjects");
         modelBuilder.Entity<Note>().ToTable("Notes");
+        modelBuilder.Entity<TimetableEvent>().ToTable("TimetableEvents");
         
         //Seed subjects data
         Subject subject = new Subject()
@@ -53,5 +56,20 @@ public class ApplicationDbContext : DbContext
         };
         
         modelBuilder.Entity<Note>().HasData(note1, note2);
+        
+        //seed timetable data
+        TimetableEvent timetableEvent = new TimetableEvent()
+        {
+            TimetableEventId = Guid.NewGuid(),
+            EventName = "Default lecture",
+            Teacher = "dr Paweł Pączkowski",
+            EventRoom = "1.14",
+            Type = "lecture",
+            Day = "Monday",
+            StartTime = "10:00",
+            EndTime = "11:30"
+        };
+        
+        modelBuilder.Entity<TimetableEvent>().HasData(timetableEvent);
     }
 }

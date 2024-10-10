@@ -18,9 +18,11 @@ public class Program
 
         builder.Services.AddScoped<ISubjectsRepository, SubjectsRepository>();
         builder.Services.AddScoped<INotesRepository, NoteRepository>();
+        builder.Services.AddScoped<ITimetableEventRepository, TimetableEventRepository>();
         
         builder.Services.AddScoped<ISubjectsService, SubjectsService>();
         builder.Services.AddScoped<INotesService, NotesService>();
+        builder.Services.AddScoped<ITimetableEventService, TimetableEventService>();
         
         //add DbContext as service
         builder.Services.AddDbContext<ApplicationDbContext>(options =>

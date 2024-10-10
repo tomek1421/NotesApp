@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NotesApp.Entities;
 
@@ -11,9 +12,11 @@ using NotesApp.Entities;
 namespace NotesApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241008112601_TimetableEventsTable")]
+    partial class TimetableEventsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,11 +122,11 @@ namespace NotesApp.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("EventName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("LectureName")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
-                    b.Property<string>("EventRoom")
+                    b.Property<string>("LectureRoom")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -146,11 +149,11 @@ namespace NotesApp.Migrations
                     b.HasData(
                         new
                         {
-                            TimetableEventId = new Guid("e10c30d8-2784-4df9-88bf-cf04b081c1a6"),
+                            TimetableEventId = new Guid("a946f8db-0724-45b9-b685-296cd0fc6b8d"),
                             Day = "Monday",
                             EndTime = "11:30",
-                            EventName = "Default lecture",
-                            EventRoom = "1.14",
+                            LectureName = "Default lecture",
+                            LectureRoom = "1.14",
                             StartTime = "10:00",
                             Teacher = "dr Paweł Pączkowski",
                             Type = "lecture"

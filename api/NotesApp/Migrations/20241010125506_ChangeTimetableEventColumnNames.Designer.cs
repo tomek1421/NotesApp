@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NotesApp.Entities;
 
@@ -11,9 +12,11 @@ using NotesApp.Entities;
 namespace NotesApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241010125506_ChangeTimetableEventColumnNames")]
+    partial class ChangeTimetableEventColumnNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,8 +123,8 @@ namespace NotesApp.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("EventName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("EventRoom")
                         .HasMaxLength(10)
@@ -146,7 +149,7 @@ namespace NotesApp.Migrations
                     b.HasData(
                         new
                         {
-                            TimetableEventId = new Guid("e10c30d8-2784-4df9-88bf-cf04b081c1a6"),
+                            TimetableEventId = new Guid("b8ad942e-90fb-4390-b3bd-bc2191b37e11"),
                             Day = "Monday",
                             EndTime = "11:30",
                             EventName = "Default lecture",

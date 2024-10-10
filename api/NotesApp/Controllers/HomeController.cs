@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NotesApp.DTO;
-using NotesApp.Entities;
 using NotesApp.Enums;
-using NotesApp.RepositoryContracts;
 using NotesApp.ServiceContracts;
 
 namespace NotesApp.Controllers;
