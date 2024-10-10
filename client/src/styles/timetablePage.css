@@ -111,3 +111,9 @@
 .timetable-tile div .time {
     display: none;
 }
+
+.radio-field {
+    display: flex;
+    gap: 1rem;
+    font-weight: 400;
+}

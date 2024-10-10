@@ -43,6 +43,15 @@ input[type=text] {
   border-color: #d2d2d2;
 }
 
+input[type=time] {
+  font-size: 1rem;
+  padding: 0.3rem;
+  font-weight: 400;
+  border: 1px solid #898989;
+  border-radius: 0.5rem;
+  border-color: #d2d2d2;
+}
+
 textarea {
   font-size: 1rem;
   padding: 0.5rem;

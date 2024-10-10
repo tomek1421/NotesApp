@@ -13,6 +13,7 @@ import DeleteNotePage from './operation_pages/DeleteNotePage';
 import EditNotePage from './operation_pages/EditNotePage';
 import TasksPage from './pages/TasksPage';
 import TimetablePage from './pages/TimetablePage';
+import AddEventPage from './operation_pages/AddEventPage';
 import { PreviousLocationProvider } from './components/PreviousLocationContext';
 
 // import the library
@@ -45,7 +46,10 @@ function App() {
               </Route>
             </Route>
             <Route path="tasks" element={<TasksPage />} />
-            <Route path="plan" element={<TimetablePage />} />
+            <Route path="timetable">
+              <Route index element={<TimetablePage />} />
+              <Route path="add-event" element={<AddEventPage />} />
+            </Route>
           </Route>
         </Routes>
       </PreviousLocationProvider>

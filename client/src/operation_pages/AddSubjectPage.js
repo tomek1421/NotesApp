@@ -52,16 +52,20 @@ function AddSubjectPage() {
     function handleSubmit(event) {
         event.preventDefault();
 
+        let hasError = false;
+
         //validation
         if (formData.subjectName.length == 0) {
             setError(values => ({...values, subjectName: "Field can't be empty"}));
+            hasError = true;
         } 
         
         if (formData.subjectDescription.length == 0) {
             setError(values => ({...values, subjectDescription: "Field can't be empty"}));
+            hasError = true;
         } 
 
-        if (formData.subjectName.length == 0 || formData.subjectDescription.length == 0)
+        if (hasError)
             return;
 
         const stringifyHashtags = JSON.stringify(selectedHashtags);

@@ -5,7 +5,7 @@
         "icon": "fa-solid fa-pencil",
         "backgroundColor": "#dcf3ff",
         "color": "#1c8dff",
-        "link": "plan"
+        "link": "timetable"
     },
     {
         "title": "Text Editor",

@@ -1,5 +1,5 @@
 
-function TimeTableSubject({ lectureName, teacher, lectureRoom, type, day, startTime, endTime }) {
+function TimeTableEvent({ eventName, teacher, eventRoom, type, day, startTime, endTime }) {
 
     const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -18,11 +18,11 @@ function TimeTableSubject({ lectureName, teacher, lectureRoom, type, day, startT
 
     return (
         <div className="timetable-tile timetable-tile-notfit" style={{ gridRow: `${gridRowStart} / ${gridRowEnd}`, gridColumn: `${gridColumnStart} / ${gridColumnStart + 1}` }} >
-            <div className="title" >{lectureName}</div>
+            <div className="title" >{eventName}</div>
             <div className="teacher" >{teacher}</div>
             <div>
                 <div>
-                    <div className="lecture-room" >{lectureRoom}</div>
+                    <div className="lecture-room" >{eventRoom}</div>
                     { type == "lecture" ? <div className="lecture" >Lecture</div> : <div className="practise" >Practise</div> }
                 </div>
                 <div className="time" >{`${startTime} - ${endTime}`}</div>
@@ -31,4 +31,4 @@ function TimeTableSubject({ lectureName, teacher, lectureRoom, type, day, startT
     )
 }
 
-export default TimeTableSubject;
+export default TimeTableEvent;
