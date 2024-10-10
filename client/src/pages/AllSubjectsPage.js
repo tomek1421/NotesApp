@@ -51,6 +51,24 @@ function AllSubjectsPage() {
 
     console.log(queryParams);
 
+    let sortByASC = "A-Z";
+    let sortByDESC = "Z-A";
+
+    switch (queryParams.sortBy) {
+        case "SubjectName":
+            sortByASC = "A-Z";
+            sortByDESC = "Z-A";
+            break;
+        case "NotesCount":
+            sortByASC = "Low to High";
+            sortByDESC = "High to Low";
+            break;
+        case "DateOfCreation":
+            sortByASC = "Oldest to Newest";
+            sortByDESC = "Newest to Oldest";
+            break;
+    }
+
     return (
         <div className="flex-center">
             <div className="outlet-container" >
@@ -103,8 +121,8 @@ function AllSubjectsPage() {
                                 value={queryParams.sortOrder}
                                 onChange={handleChange}
                             >
-                                <option value="ASC" >Ascending</option>
-                                <option value="DESC" >Descending</option>
+                                <option value="ASC" >{sortByASC}</option>
+                                <option value="DESC" >{sortByDESC}</option>
                             </select>
                         </div>
                         <button type="submit" className="search-full-button" ><div><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" size="xl" /></div></button>
