@@ -38,10 +38,12 @@ function DeleteNotePage() {
         <div className="flex-center align-center width-max">
             <div className="operation-container" >
                 <h2>Delete Note</h2>
-                Are you sure you want to permanently delete this note?
-                <br/>
-                ID: {noteId}
-                <div className="flex-operation-buttons" >
+                <div className="operation-inputs" >
+                    Are you sure you want to permanently delete this note?
+                    <br/>
+                    ID: {noteId}
+                </div>
+                <div className="operation-buttons" >
                     <Link to={`/subjects/${subjectId}/notes`} ><button className="cancel-button" >Cancel</button></Link>
                     <button onClick={handleDelete} type="submit" className="delete-full-button" >Delete</button>
                 </div>

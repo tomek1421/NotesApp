@@ -40,10 +40,12 @@ function DeleteSubjectPage() {
         <div className="flex-center align-center width-max">
             <div className="operation-container" >
                 <h2>Delete Subject</h2>
-                Are you sure you want to permanently delete this subject?
-                <br/>
-                ID: {subjectId}
-                <div className="flex-operation-buttons" >
+                <div className="operation-inputs" >
+                    Are you sure you want to permanently delete this subject?
+                    <br/>
+                    ID: {subjectId}
+                </div>
+                <div className="operation-buttons" >
                     <Link to="/subjects" ><button className="cancel-button" >Cancel</button></Link>
                     <button onClick={handleDelete} type="submit" className="delete-full-button" >Delete</button>
                 </div>
