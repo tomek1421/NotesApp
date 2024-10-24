@@ -1,5 +1,7 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
-function TimeTableEvent({ eventName, teacher, eventRoom, type, day, startTime, endTime }) {
+function TimeTableEvent({ timetableEventId, eventName, teacher, eventRoom, type, day, startTime, endTime }) {
 
     const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -18,12 +20,26 @@ function TimeTableEvent({ eventName, teacher, eventRoom, type, day, startTime, e
 
     return (
         <div className="timetable-tile timetable-tile-notfit" style={{ gridRow: `${gridRowStart} / ${gridRowEnd}`, gridColumn: `${gridColumnStart} / ${gridColumnStart + 1}` }} >
-            <div className="title" >{eventName}</div>
-            <div className="teacher" >{teacher}</div>
+            <div>
+                <div>
+                    <div className="title" ><div>{eventName}</div></div>
+                    <div className="teacher" >{teacher}</div>
+                </div>
+                <div className="icons">
+                    <div >
+                        <Link to={`${timetableEventId}/delete-event`} style={{ color: 'inherit', textDecoration: 'inherit'}}><FontAwesomeIcon icon="fa-regular fa-trash-can" size="l" /></Link> 
+                    </div>
+                    <div >
+                        <Link to={`${timetableEventId}/edit-event`} style={{ color: 'inherit', textDecoration: 'inherit'}}><FontAwesomeIcon icon="fa-regular fa-pen-to-square" size="l" /></Link>
+                    </div>
+                </div>
+            </div>
             <div>
                 <div>
                     <div className="lecture-room" >{eventRoom}</div>
-                    { type == "lecture" ? <div className="lecture" >Lecture</div> : <div className="practise" >Practise</div> }
+                    { type == "lecture" && <div className="tag lecture" >Lecture</div> }
+                    { type == "practise" && <div className="tag practise" >Practise</div> }
+                    { type == "internship" && <div className="tag internship" >Internship</div> }
                 </div>
                 <div className="time" >{`${startTime} - ${endTime}`}</div>
             </div>

@@ -6,8 +6,20 @@ async function getTimetableEvents() {
     return await axios.get(url);
 }
 
+async function getTimetableEventById(eventId) {
+    return await axios.get(`${url}/${eventId}`);
+}
+
 async function createTimetableEvent(body) {
     return await axios.post(url, body);
 }
 
-export { getTimetableEvents, createTimetableEvent }
+async function updateTimetableEvent(timetableEventId, body) {
+    return await axios.put(`${url}/${timetableEventId}`, body);
+}
+
+async function deleteTimetableEvent(timetableEventId) {
+    return await axios.delete(`${url}/${timetableEventId}`);
+}
+
+export { getTimetableEvents, getTimetableEventById, createTimetableEvent, updateTimetableEvent, deleteTimetableEvent }

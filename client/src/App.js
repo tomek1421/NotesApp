@@ -14,6 +14,7 @@ import EditNotePage from './operation_pages/EditNotePage';
 import TasksPage from './pages/TasksPage';
 import TimetablePage from './pages/TimetablePage';
 import AddEventPage from './operation_pages/AddEventPage';
+import DeleteEventPage from './operation_pages/DeleteEventPage';
 import { PreviousLocationProvider } from './components/PreviousLocationContext';
 
 // import the library
@@ -24,6 +25,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { faL } from '@fortawesome/free-solid-svg-icons';
+import EditEventPage from './operation_pages/EditEventPage';
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
             <Route path="timetable">
               <Route index element={<TimetablePage />} />
               <Route path="add-event" element={<AddEventPage />} />
+              <Route path=":timetableEventId/delete-event" element={<DeleteEventPage />} />
+              <Route path=":timetableEventId/edit-event" element={<EditEventPage />} />
             </Route>
           </Route>
         </Routes>

@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { createTimetableEvent } from "../apiCalls/timetable";
 import toast, { Toaster } from "react-hot-toast";
+import { getTimetableEventById, updateTimetableEvent } from "../apiCalls/timetable";
 
-function AddEventPage() {
+function EditEventPage() {
 
     const [formData, setFormData] = useState({
         eventName: "",
@@ -27,7 +28,50 @@ function AddEventPage() {
 
     const [timespanArray, setTimespanArray] = useState([]);
 
+    const { timetableEventId } = useParams();
+
     const navigate = useNavigate();
+
+    function calculateMinutesBetween(time1, time2) {
+        // Helper function to convert time string "HH:MM" to minutes
+        function timeToMinutes(time) {
+            const [hours, minutes] = time.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+    
+        // Convert both times to minutes
+        const minutes1 = timeToMinutes(time1);
+        const minutes2 = timeToMinutes(time2);
+    
+        // Calculate the difference in minutes
+        return minutes2 - minutes1;
+    }
+
+    useEffect(() => {
+        getTimetableEventById(timetableEventId)
+        .then(msg => {
+            const data = msg.data;
+            const duration = calculateMinutesBetween(data.startTime, data.endTime)
+            console.log(msg.data);
+            setFormData({
+                eventName: data.eventName,
+                teacher: data.teacher,
+                eventRoom: data.eventRoom,
+                type: data.type,
+                day: data.day,
+                duration: String(duration),
+                timespan: `${data.startTime}-${data.endTime}`,
+            });
+            console.log(duration);
+            
+            setTimespanArray(getAvaiableTimespan(parseInt(duration)))
+        }).catch(err => {
+            console.log(err);
+        });
+    }, [])
+
+    // console.log(formData);
+    
 
     function generateTimeArray() {
         const times = [];
@@ -158,9 +202,7 @@ function AddEventPage() {
             endTime: formData.timespan.substring(6,11)
         }
 
-        console.log(data);
-
-        createTimetableEvent(data)
+        updateTimetableEvent(timetableEventId, data)
         .then(msg => {
             toast.success('Successfully created subject!', {
                 position: 'bottom-center',
@@ -190,7 +232,6 @@ function AddEventPage() {
     const timespanStyle = error.timespan ? {border: "1px solid red"} : null;
     const duration = error.duration ? {border: "1px solid red"} : null;
 
-    console.log(formData)
     return (
         <div className="flex-center align-center width-max">
             <div className="operation-container" >
@@ -336,4 +377,4 @@ function AddEventPage() {
     )
 }
 
-export default AddEventPage;
+export default EditEventPage;

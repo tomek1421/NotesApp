@@ -138,21 +138,13 @@ button:hover {
 }
 
 .search-full-button {
-    background-color: transparent;
-    color: black;
-    border: none;
-    display: flex;
+    background-color: #3c3c3c;
+    color: #ededed;
+    border: 1px solid #3c3c3c;
 }
 
 .search-full-button:hover {
-    background-color: #ededed;
-    color: black;
-    border: none;
-}
-
-.search-full-button:hover div {
-    transition: 0.2s;
-    transform: scale(1.2);
+    background-color: #000000;
 }
 
 .subject-button {

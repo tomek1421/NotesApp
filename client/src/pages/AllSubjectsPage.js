@@ -125,7 +125,8 @@ function AllSubjectsPage() {
                                 <option value="DESC" >{sortByDESC}</option>
                             </select>
                         </div>
-                        <button type="submit" className="search-full-button" ><div><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" size="xl" /></div></button>
+                        {/* <button type="submit" className="search-full-button" ><div><span>Apply</span><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" size='s'/></div></button> */}
+                        <button type="submit" className="search-full-button" >Apply</button>
                     </form>  
                 </div>
                 <div className="subjects-list">

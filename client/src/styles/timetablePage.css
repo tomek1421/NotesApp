@@ -58,13 +58,31 @@
 .timetable-tile .title {
     font-size: 0.9rem;
     line-height: 0.95rem;
+    max-height: 1rem;
+    overflow: hidden;
 }
 
 .timetable-tile .teacher {
     color: #595959;
 }
 
-.timetable-tile .lecture-room, .timetable-tile .time, .timetable-tile .practise, .timetable-tile .lecture {
+.timetable-tile > div:nth-child(1), .timetable-tile > div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+}
+
+.timetable-tile .icons {
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.timetable-tile .icons div:hover {
+    transform: scale(1.1);
+}
+
+.timetable-tile .lecture-room, .timetable-tile .time, .timetable-tile .tag {
     background-color: #d3ebff;
     padding: 0.2rem;
     border-radius: 0.25rem;
@@ -76,18 +94,28 @@
 
 .timetable-tile .practise {
     background-color: #edd0ff;
+    border: 2px solid #d99bff;
+    padding: calc(0.2rem - 2px);
 }
 
 .timetable-tile .lecture {
     background-color: #ffd0ef;
+    border: 2px solid #f89eda;
+    padding: calc(0.2rem - 2px);
 }
 
-.timetable-tile > div:nth-child(3) {
+.timetable-tile .internship {
+    background-color: #fcc1c1;
+    border: 2px dashed #fc8b8b;
+    padding: calc(0.2rem - 2px);
+}
+
+.timetable-tile > div:nth-child(2) {
     display: flex;
     justify-content: space-between;
 }
 
-.timetable-tile > div:nth-child(3) div {
+.timetable-tile > div:nth-child(2) div {
     display: flex;
     gap: 0.3rem;
 }
