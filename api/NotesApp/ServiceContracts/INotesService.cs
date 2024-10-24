@@ -10,6 +10,5 @@ public interface INotesService
     
     NoteResponse UpdateNoteContent(Guid? subjectId, Guid? noteId, NoteUpdateContentRequest? noteUpdateRequest);
     NoteResponse UpdateNoteTitle(Guid? subjectId, Guid? noteId, NoteUpdateTitleRequest? noteUpdateRequest);
-    
     bool DeleteNote(Guid? subjectId, Guid? noteId);
 }

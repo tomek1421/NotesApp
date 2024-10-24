@@ -25,18 +25,35 @@ public class TimetableEventRepository : ITimetableEventRepository
         return _db.TimetableEvents.ToList();
     }
 
-    public TimetableEvent GetEventById(Guid timetableEventId)
+    public TimetableEvent? GetEventById(Guid timetableEventId)
     {
-        throw new NotImplementedException();
+        return _db.TimetableEvents.FirstOrDefault(temp => temp.TimetableEventId == timetableEventId);
     }
 
     public TimetableEvent UpdateEvent(TimetableEvent timetableEvent)
     {
-        throw new NotImplementedException();
+        TimetableEvent? matchingTimetableEvent = _db.TimetableEvents.FirstOrDefault(temp => temp.TimetableEventId == timetableEvent.TimetableEventId);
+
+        if (matchingTimetableEvent == null)
+            return timetableEvent;
+        
+        matchingTimetableEvent.EventName = timetableEvent.EventName;
+        matchingTimetableEvent.Teacher = timetableEvent.Teacher;
+        matchingTimetableEvent.EventRoom = timetableEvent.EventRoom;
+        matchingTimetableEvent.Type = timetableEvent.Type;
+        matchingTimetableEvent.Day = timetableEvent.Day;
+        matchingTimetableEvent.StartTime = timetableEvent.StartTime;
+        matchingTimetableEvent.EndTime = timetableEvent.EndTime;
+        
+        _db.SaveChanges();
+        return matchingTimetableEvent;
     }
 
     public bool DeleteEvent(Guid timetableEventId)
     {
-        throw new NotImplementedException();
+        _db.TimetableEvents.RemoveRange(_db.TimetableEvents.Where(temp => temp.TimetableEventId == timetableEventId));
+        
+        int rowsDeleted = _db.SaveChanges();
+        return rowsDeleted > 0;
     }
 }

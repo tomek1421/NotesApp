@@ -8,7 +8,7 @@ public interface ITimetableEventRepository
     
     List<TimetableEvent> GetAllEvents();
     
-    TimetableEvent GetEventById(Guid timetableEventId);
+    TimetableEvent? GetEventById(Guid timetableEventId);
     
     TimetableEvent UpdateEvent(TimetableEvent timetableEvent);
     

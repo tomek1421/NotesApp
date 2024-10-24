@@ -38,4 +38,57 @@ public class TimetableEventService : ITimetableEventService
         
         return timetableEvent.Select(temp => temp.ToTimetableEventResponse()).ToList();
     }
+
+    public TimetableEventResponse? GetEventById(Guid? timetableEventId)
+    {
+        if (timetableEventId == null)
+            throw new ArgumentNullException(nameof(timetableEventId));
+        
+        TimetableEvent? timetableEvent = _timetableEventRepository.GetEventById(timetableEventId.Value);
+
+        if (timetableEvent == null)
+            return null;
+        
+        return timetableEvent.ToTimetableEventResponse();
+    }
+
+    public TimetableEventResponse UpdateEvent(Guid? timetableEventId, TimetableEventUpdateRequest? timetableEventUpdateRequest)
+    {
+        if (timetableEventId == null || timetableEventUpdateRequest == null)
+            throw new ArgumentNullException(nameof(timetableEventId));
+        
+        ValidationHelper.ModelValidation(timetableEventUpdateRequest);
+        
+        TimetableEvent? matchingTimetableEvent = _timetableEventRepository.GetEventById(timetableEventId.Value);
+
+        if (matchingTimetableEvent == null)
+            return null;
+        
+        matchingTimetableEvent.EventName = timetableEventUpdateRequest.EventName;
+        matchingTimetableEvent.Teacher = timetableEventUpdateRequest.Teacher;
+        matchingTimetableEvent.EventRoom = timetableEventUpdateRequest.EventRoom;
+        matchingTimetableEvent.Type = timetableEventUpdateRequest.Type;
+        matchingTimetableEvent.Day = timetableEventUpdateRequest.Day;
+        matchingTimetableEvent.StartTime = timetableEventUpdateRequest.StartTime;
+        matchingTimetableEvent.EndTime = timetableEventUpdateRequest.EndTime;
+        
+        _timetableEventRepository.UpdateEvent(matchingTimetableEvent);
+        
+        return matchingTimetableEvent.ToTimetableEventResponse();
+    }
+
+    public bool DeleteEvent(Guid? timetableEventId)
+    {
+        if (timetableEventId == null)
+            throw new ArgumentNullException(nameof(timetableEventId));
+        
+        TimetableEvent? timetableEvent = _timetableEventRepository.GetEventById(timetableEventId.Value);
+
+        if (timetableEvent == null)
+            return false;
+        
+        _timetableEventRepository.DeleteEvent(timetableEventId.Value);
+
+        return true;
+    }
 }

@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using NotesApp.Entities;
 
 namespace NotesApp.DTO;
 
-public class TimetableEventAddRequest
+public class TimetableEventUpdateRequest
 {
-    [Required(ErrorMessage = "Event Name can't be empty")]
+    [Required(ErrorMessage = "Lecture Name can't be empty")]
     [StringLength(50)]
     public string? EventName { get; set; }
     
@@ -13,7 +12,7 @@ public class TimetableEventAddRequest
     [StringLength(30)]
     public string? Teacher { get; set; }
 
-    [Required(ErrorMessage = "Event Room can't be empty")]
+    [Required(ErrorMessage = "Lecture Room can't be empty")]
     [RegularExpression(@"^[1-5]\.(0?[1-9]|[1-9]\d|100)$|^home$", ErrorMessage = "Event Room must be in the format X.Y, where X is between 1 and 5, and Y is between 1 and 100 or 'home'")]
     [StringLength(10)]
     public string? EventRoom { get; set; }
@@ -38,18 +37,4 @@ public class TimetableEventAddRequest
     [RegularExpression(@"^([01]\d|2[0-3]):[0-5]\d$", ErrorMessage = "End Time must be in the format HH:MM and between 00:00 and 23:59")]
     [StringLength(10)]
     public string? EndTime { get; set; }
-
-    public TimetableEvent ToTimetableEvent()
-    {
-        return new TimetableEvent()
-        {
-            EventName = EventName,
-            Teacher = Teacher,
-            EventRoom = EventRoom,
-            Day = Day,
-            Type = Type,
-            StartTime = StartTime,
-            EndTime = EndTime
-        };
-    }
 }
