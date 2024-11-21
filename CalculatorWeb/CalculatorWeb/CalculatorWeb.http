@@ -1,0 +1,6 @@
+@CalculatorWeb_HostAddress = http://localhost:41209
+
+### POST request to calculate an expression
+POST {{CalculatorWeb_HostAddress}}/calculate
+Content-Type: application/json
+Accept: application/json
