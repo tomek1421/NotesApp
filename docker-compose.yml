@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong!Passw0rd # Change this to your strong password
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserverdata:/var/opt/mssql
+    restart: unless-stopped
+
+  dotnetapp:
+    build:
+      context: ./api
+      dockerfile: Dockerfile # Ensure you have a Dockerfile in the same directory
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+
+  reactapp:
+    build:
+      context: ./client # Change this to the path of your React app folder
+      dockerfile: Dockerfile # Ensure you have a Dockerfile in the same directory as your React app
+    ports:
+      - "3000:3000" # Expose the React app on port 3000
+    depends_on:
+      - dotnetapp
+
+  calculatorapp:
+    build:
+      context: ./CalculatorWeb
+      dockerfile: Dockerfile
+    ports:
+      - "5045:8080"
+    depends_on:
+      - dotnetapp
+
+volumes:
+  sqlserverdata:
