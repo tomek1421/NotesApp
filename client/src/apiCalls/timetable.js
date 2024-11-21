@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:5262/timetable"
+// const url = "http://localhost:5262/timetable"
+const url = "http://localhost:8080/timetable"
 
 async function getTimetableEvents() {
     return await axios.get(url);

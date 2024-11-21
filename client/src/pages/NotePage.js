@@ -49,7 +49,7 @@ function NotePage() {
 
     function handleSave(event) {
         event.preventDefault();
-        if (lastChange.ops.length == 0) return;
+        if (lastChange.ops.length === 0) return;
         const stringifyJson = JSON.stringify(quillRef.current?.getContents().ops);
         saveNote(subjectId, noteId, { noteContent: stringifyJson })
         .then(msg => {

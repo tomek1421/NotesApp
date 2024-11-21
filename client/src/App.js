@@ -11,7 +11,6 @@ import NotePage from './pages/NotePage';
 import AddNotePage from './operation_pages/AddNotePage';
 import DeleteNotePage from './operation_pages/DeleteNotePage';
 import EditNotePage from './operation_pages/EditNotePage';
-import TasksPage from './pages/TasksPage';
 import TimetablePage from './pages/TimetablePage';
 import AddEventPage from './operation_pages/AddEventPage';
 import DeleteEventPage from './operation_pages/DeleteEventPage';
@@ -26,6 +25,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import EditEventPage from './operation_pages/EditEventPage';
+import CalculatorPage from './pages/CalculatorPage';
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
                 <Route path=":noteId/edit-note" element={<EditNotePage />} />
               </Route>
             </Route>
-            <Route path="tasks" element={<TasksPage />} />
+            <Route path="calculator" element={<CalculatorPage />} />
             <Route path="timetable">
               <Route index element={<TimetablePage />} />
               <Route path="add-event" element={<AddEventPage />} />

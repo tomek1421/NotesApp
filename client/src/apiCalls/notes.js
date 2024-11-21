@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:5262/subjects"
+// const url = "http://localhost:5262/subjects"
+const url = "http://localhost:8080/subjects"
 
 async function getNote(subjectId, noteId) {
     return await axios.get(`${url}/${subjectId}/notes/${noteId}`);

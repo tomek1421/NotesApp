@@ -16,11 +16,11 @@
         "link": "subjects"
     },
     {
-        "title": "To-Do List",
-        "text": "Manage your tasks with a simple, intuitive to-do list.",
+        "title": "Calculator",
+        "text": "Instantly solve calculations with our easy-to-use calculator.",
         "icon": "fa-solid fa-calendar-check",
         "backgroundColor": "#e8dcff",
         "color": "#8d4fff",
-        "link": "tasks"
+        "link": "calculator"
     }
 ]

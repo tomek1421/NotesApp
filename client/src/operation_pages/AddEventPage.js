@@ -29,17 +29,17 @@ function AddEventPage() {
 
     const navigate = useNavigate();
 
-    function generateTimeArray() {
-        const times = [];
-        for (let hour = 8; hour <= 20; hour++) {
-          for (let minute = 0; minute < 60; minute += 15) {
-            const formattedHour = hour.toString().padStart(2, '0');
-            const formattedMinute = minute.toString().padStart(2, '0');
-            times.push(`${formattedHour}:${formattedMinute}`);
-          }
-        }
-        return times;
-    }
+    // function generateTimeArray() {
+    //     const times = [];
+    //     for (let hour = 8; hour <= 20; hour++) {
+    //       for (let minute = 0; minute < 60; minute += 15) {
+    //         const formattedHour = hour.toString().padStart(2, '0');
+    //         const formattedMinute = minute.toString().padStart(2, '0');
+    //         times.push(`${formattedHour}:${formattedMinute}`);
+    //       }
+    //     }
+    //     return times;
+    // }
 
     function addMinutesToTime(time, minutesToAdd) {
         let [hours, minutes] = time.split(':').map(Number);  // Split the time into hours and minutes
@@ -65,7 +65,7 @@ function AddEventPage() {
             //   console.log(startTime, endTime);
                 const hs = parseInt(startTime.substring(0, 2))
                 const he = parseInt(endTime.substring(0, 2))
-                const ms = parseInt(startTime.substring(3, 5))
+                // const ms = parseInt(startTime.substring(3, 5))
                 const me = parseInt(endTime.substring(3, 5))
                 if (hs + (he - hs) < 20 || ((hs + (he - hs) === 20) && me === 0)) {
                     timespanArray.push([startTime, endTime]);
@@ -76,7 +76,7 @@ function AddEventPage() {
         }
     }
       
-    const timeArray = generateTimeArray();
+    // const timeArray = generateTimeArray();
     // console.log(timeArray);
 
     const durationArray = []
@@ -98,7 +98,7 @@ function AddEventPage() {
         }
         
         //validation
-        if (value.length == 0)
+        if (value.length === 0)
             setError(values => ({...values, [name]: "Field can't be empty"}))
         else setError(values => ({...values, [name]: ""}))
 

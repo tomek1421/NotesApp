@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:5262/subjects"
+// const url = "http://localhost:5262/subjects"
+const url = "http://localhost:8080/subjects"
 
 async function createSubject(body) {
     return await axios.post(url, body);

@@ -12,8 +12,8 @@ function Layout() {
                     <Link to="subjects" style={{ color: 'inherit', textDecoration: 'none'}}>
                         <li>My Subjects</li>
                     </Link>
-                    <Link to="tasks" style={{ color: 'inherit', textDecoration: 'none'}}>
-                        <li>Task Manager</li>
+                    <Link to="calculator" style={{ color: 'inherit', textDecoration: 'none'}}>
+                        <li>Calculator</li>
                     </Link>
                     <Link to="timetable" style={{ color: 'inherit', textDecoration: 'none'}}>
                         <li>Semester Plan</li>

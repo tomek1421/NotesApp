@@ -12,7 +12,8 @@ function AllSubjectsPage() {
     const [subjects, setSubjects] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:5262/subjects")
+        // axios.get("http://localhost:5262/subjects")
+        axios.get("http://localhost:8080/subjects")
         .then(msg => {
             setSubjects(msg.data)
             console.log(msg);
@@ -38,7 +39,8 @@ function AllSubjectsPage() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        const url = `http://localhost:5262/subjects?searchBy=${queryParams.searchBy}&searchString=${queryParams.searchString}&sortBy=${queryParams.sortBy}&sortOrder=${queryParams.sortOrder}`;
+        // const url = `http://localhost:5262/subjects?searchBy=${queryParams.searchBy}&searchString=${queryParams.searchString}&sortBy=${queryParams.sortBy}&sortOrder=${queryParams.sortOrder}`;
+        const url = `http://localhost:8080/subjects?searchBy=${queryParams.searchBy}&searchString=${queryParams.searchString}&sortBy=${queryParams.sortBy}&sortOrder=${queryParams.sortOrder}`;
 
         axios.get(url)
         .then(msg => {
@@ -66,6 +68,8 @@ function AllSubjectsPage() {
         case "DateOfCreation":
             sortByASC = "Oldest to Newest";
             sortByDESC = "Newest to Oldest";
+            break;
+        default:
             break;
     }
 
